@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premitive Digital Solutions Pvt Ltd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1f2937;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .logo {
+      background-color: #f59e0b;
+      color: #1f2937;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      padding: 0.4rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .tagline {
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+      color: #d1d5db;
+      font-weight: 400;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      margin: 0 0.75rem;
+      color: #9ca3af;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .card {
+      background-color: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .card img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      flex-shrink: 0;
+    }
+    .card-content {
+      flex: 1;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: #f3f4f6;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    a {
+      color: #4f46e5;
+    }
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .card img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span class="logo">P</span> Premitive Digital Solutions</h1>
+    <p class="tagline">Empowering Possibilities Through Technology & AI</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#vision">Vision</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/9015/9015145.png" width="64" height="64" alt="About Icon">
+        <div class="card-content">
+          <p>We are a startup committed to solving real-world problems by integrating intelligent technology across domains. With a focus on impact, scalability, and simplicity, we aim to build products that make lives better — from everyday logistics to advanced analytics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/763/763812.png" width="64" height="64" alt="Vision Icon">
+        <div class="card-content">
+          <p>To be a trusted name in AI-powered innovation. We aspire to lead the way in applying technology responsibly to empower communities, modernize workflows, and drive efficiency across traditional and modern businesses alike.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="card-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+  
+      <div class="card" style="background-color: #f3f4f6;">
+        <div class="card-content">
+          <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">End-to-End Software Development</h3>
+          <p>We build robust, scalable, and user-friendly applications tailored to your business needs—ranging from web and mobile apps to enterprise systems. Our agile-driven development ensures high quality and fast delivery.</p>
+        </div>
+      </div>
+  
+      <div class="card" style="background-color: #e0f2fe;">
+        <div class="card-content">
+          <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">Custom Utility Development</h3>
+          <p>We create lightweight, high-performance tools for automation, monitoring, reporting, and data handling that streamline workflows and improve operational productivity.</p>
+        </div>
+      </div>
+  
+      <div class="card" style="background-color: #ede9fe;">
+        <div class="card-content">
+          <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">Testing & QA Services</h3>
+          <p>We provide both manual and automated testing services—including functional, regression, and performance testing—ensuring your software remains reliable, scalable, and bug-free.</p>
+        </div>
+      </div>
+  
+      <div class="card" style="background-color: #fef9c3;">
+        <div class="card-content">
+          <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">Integration Services (On-Prem & Cloud)</h3>
+          <p>We offer seamless integration of applications and services through APIs, microservices, ETL pipelines, and connectors—whether it's legacy systems or modern cloud-native architectures.</p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/542/542638.png" width="24" height="24" style="margin-right: 0.5rem;" alt="Contact Icon">
+        <div class="card-content">
+          <p>Drop us a note at <a href="mailto:admin@premitive.in">admin@premitive.in</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Premitive Digital Solutions Pvt Ltd. All rights reserved.
+  </footer>
+</body>
+</html>
