@@ -3,206 +3,520 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premitive Digital Solutions Pvt Ltd</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Premitive Digital Solutions - AI-powered software development, integration services, and digital transformation." />
+  <title>Premitive Digital Solutions | AI-Powered Innovation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --accent: #f59e0b;
+      --bg-dark: #111827;
+      --bg-card: rgba(255, 255, 255, 0.02);
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      background-color: #f9fafb;
-      color: #111827;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    header {
-      background-color: #1f2937;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
+
+    .mesh-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: var(--bg-dark);
     }
-    header h1 {
-      font-size: 1.75rem;
-      font-weight: 700;
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      background: rgba(15, 15, 35, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.75rem 2rem;
+      background: rgba(15, 15, 35, 0.95);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      text-decoration: none;
     }
-    .logo {
-      background-color: #f59e0b;
+
+    .nav-logo-mark {
+      background-color: var(--primary);
       color: #1f2937;
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-weight: 700;
       padding: 0.4rem 0.75rem;
       border-radius: 9999px;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       line-height: 1;
     }
-    .tagline {
-      margin-top: 0.4rem;
-      font-size: 0.95rem;
-      color: #d1d5db;
-      font-weight: 400;
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
     }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 0.75rem;
-      color: #9ca3af;
+
+    .nav-links a {
+      color: var(--text-secondary);
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.875rem;
+      transition: color 0.2s ease;
     }
-    nav a:hover {
-      color: #fff;
+
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
     }
+
+    .hero-content { text-align: center; max-width: 900px; }
+
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 550px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #1f2937;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-primary);
+      border-color: var(--text-secondary);
+    }
+
+    /* Sections */
     section {
-      padding: 2rem 1rem;
-      max-width: 1200px;
+      padding: 6rem 2rem;
+      max-width: 1400px;
       margin: 0 auto;
     }
-    section h2 {
-      font-size: 1.35rem;
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
-    .card-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
     }
-    .card {
-      background-color: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+
+    /* Cards */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border);
+    }
+
+    /* About Grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .about-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
       display: flex;
-      flex-direction: row;
       align-items: center;
+      gap: 0.75rem;
+    }
+
+    .about-card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    .icon-box {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+    }
+
+    .icon-box svg { width: 20px; height: 20px; }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
-    .card img {
-      width: 64px;
-      height: 64px;
-      object-fit: cover;
-      border-radius: 0.5rem;
-      flex-shrink: 0;
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s ease;
     }
-    .card-content {
-      flex: 1;
+
+    .service-card:hover {
+      border-color: var(--primary);
     }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background: var(--primary);
+    }
+
+    .service-icon svg { width: 22px; height: 22px; }
+
+    .service-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact-card {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .contact-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1.75rem;
+      background: var(--primary);
+      color: #1f2937;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: background 0.2s ease;
+    }
+
+    .email-link:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 1.5rem 1rem;
-      background-color: #f3f4f6;
-      color: #6b7280;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
       font-size: 0.875rem;
     }
-    a {
-      color: #4f46e5;
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
     }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .card img {
-        width: 100%;
-        height: auto;
-      }
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1><span class="logo">ℙ</span>Premitive </h1>
-    <p class="tagline">Empowering Possibilities Through Technology & AI</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#vision">Vision</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="mesh-bg"></div>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">P</div>
+        Premitive
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Building the Future with <span>AI-Powered</span> Solutions</h1>
+      <p>We transform ambitious ideas into intelligent, scalable software. From concept to deployment, we engineer solutions that drive real business impact.</p>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-primary">
+          Explore Services
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
 
   <section id="about">
-    <h2>About Us</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/9015/9015145.png" width="64" height="64" alt="About Icon">
-        <div class="card-content">
-          <p>We are a startup committed to solving real-world problems by integrating intelligent technology across domains. With a focus on impact, scalability, and simplicity, we aim to build products that make lives better — and deliver services that help companies operate smarter, faster, and more efficiently.</p>
-        </div>
+    <div class="section-header reveal">
+      <h2>Who We Are</h2>
+      <p>Driven by innovation, powered by intelligence, focused on impact.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="glass-card about-card">
+        <h3>
+          <div class="icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          About Us
+        </h3>
+        <p>We are a startup committed to solving real-world problems by integrating intelligent technology across domains. With a focus on impact, scalability, and simplicity, we aim to build products that make lives better and deliver services that help companies operate smarter, faster, and more efficiently.</p>
+      </div>
+      <div class="glass-card about-card" id="vision">
+        <h3>
+          <div class="icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+          </div>
+          Our Vision
+        </h3>
+        <p>To be a trusted name in AI-powered innovation. We aspire to lead the way in applying technology responsibly to empower communities, modernize workflows, and drive efficiency across traditional and modern businesses alike.</p>
       </div>
     </div>
   </section>
 
-  <section id="vision">
-    <h2>Our Vision</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/763/763812.png" width="64" height="64" alt="Vision Icon">
-        <div class="card-content">
-          <p>To be a trusted name in AI-powered innovation. We aspire to lead the way in applying technology responsibly to empower communities, modernize workflows, and drive efficiency across traditional and modern businesses alike.</p>
+  <section id="services">
+    <div class="section-header reveal">
+      <h2>Our Services</h2>
+      <p>End-to-end solutions engineered for scale and intelligence.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
         </div>
+        <h3>AI-Driven Software Development</h3>
+        <p>We deliver end-to-end software solutions that are scalable, user-centric, and production-ready. Our development pipeline is strongly powered by AI — from intelligent code generation and architectural planning to performance tuning and observability.</p>
       </div>
-    </div>
-  </section>
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="card-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
 
-    <div class="card" style="background-color: #f3f4f6;">
-      <div class="card-content">
-        <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">AI-Driven Software Development</h3>
-        <p>We deliver end-to-end software solutions that are scalable, user-centric, and production-ready. Our development pipeline is strongly powered by AI—from intelligent code generation and architectural planning to performance tuning and observability. Whether it’s a startup MVP or a full-scale enterprise system, we build with impact and intelligence.</p>
-      </div>
-    </div>
-
-    <div class="card" style="background-color: #e0f2fe;">
-      <div class="card-content">
-        <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">Custom Utility Development</h3>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m7.8 16.2-2.9 2.9"/><path d="M6 12H2"/><path d="m7.8 7.8-2.9-2.9"/></svg>
+        </div>
+        <h3>Custom Utility Development</h3>
         <p>We create lightweight, high-performance tools tailored for automation, monitoring, reporting, and seamless operations. From productivity hacks to backend data handlers, our utilities are built for real-world scale and simplicity.</p>
       </div>
-    </div>
 
-    <div class="card" style="background-color: #ede9fe;">
-      <div class="card-content">
-        <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">AI-Enhanced Testing & QA</h3>
-        <p>We blend traditional QA with cutting-edge AI validation to ensure your products are robust, secure, and regression-proof. Using AI models for test case generation, root cause analysis, and anomaly detection, our QA pipelines are designed for smart coverage at scale—automated, adaptive, and always learning.</p>
-      </div>
-    </div>
-
-    <div class="card" style="background-color: #fef9c3;">
-      <div class="card-content">
-        <h3 style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">Integration Services (On-Prem & Cloud)</h3>
-        <p>We design seamless integrations between systems, apps, and services—whether it's legacy on-prem infrastructure or modern cloud-native stacks. Our solutions ensure smooth data flow, API orchestration, and cross-platform compatibility across business workflows.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/542/542638.png" width="24" height="24" style="margin-right: 0.5rem;" alt="Contact Icon">
-        <div class="card-content">
-          <p>Drop us a note at <a href="mailto:admin@premitive.in">admin@premitive.in</a></p>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
+        <h3>AI-Enhanced Testing & QA</h3>
+        <p>We blend traditional QA with cutting-edge AI validation to ensure your products are robust, secure, and regression-proof. Using AI models for test case generation, root cause analysis, and anomaly detection.</p>
       </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h3>Integration Services</h3>
+        <p>We design seamless integrations between systems, apps, and services — whether it's legacy on-prem infrastructure or modern cloud-native stacks. Our solutions ensure smooth data flow, API orchestration, and cross-platform compatibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header reveal">
+      <h2>Let's Work Together</h2>
+      <p>Have a project in mind? We'd love to hear about it.</p>
+    </div>
+    <div class="glass-card contact-card reveal">
+      <h3>Ready to start?</h3>
+      <p>Drop us a line and let's discuss how we can help transform your ideas into reality.</p>
+      <a href="mailto:admin@premitive.in" class="email-link">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        admin@premitive.in
+      </a>
     </div>
   </section>
 
   <footer>
     &copy; 2025 Premitive Digital Solutions Pvt Ltd. All rights reserved.
   </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
