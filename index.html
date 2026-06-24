@@ -3,21 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Premitive Digital Solutions - AI-powered software development, integration services, and digital transformation." />
-  <title>Premitive Digital Solutions | AI-Powered Innovation</title>
+  <meta name="description" content="Premitive - AI-augmented quality engineering. Self-healing test automation, regression intelligence, performance benchmarking, and pipeline optimization for fast-moving engineering teams." />
+  <title>Premitive | AI-Augmented Quality Engineering &amp; Testing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <style>
     :root {
       --primary: #f59e0b;
       --primary-dark: #d97706;
-      --accent: #f59e0b;
-      --bg-dark: #111827;
-      --bg-card: rgba(255, 255, 255, 0.02);
-      --text-primary: #f9fafb;
+      --primary-soft: rgba(245, 158, 11, 0.12);
+      --on-primary: #0a0a0f;
+      --bg-dark: #0a0a0f;
+      --bg-card: rgba(255, 255, 255, 0.025);
+      --bg-elevated: rgba(255, 255, 255, 0.04);
+      --text-primary: #fafafa;
       --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
       --border: rgba(255, 255, 255, 0.08);
+      --border-bright: rgba(255, 255, 255, 0.14);
+      --nav-bg: rgba(10, 10, 15, 0.6);
+      --nav-bg-scrolled: rgba(10, 10, 15, 0.9);
+      --danger: #ef4444;
+      --success: #22c55e;
+    }
+
+    [data-theme="light"] {
+      --primary: #d97706;
+      --primary-dark: #b45309;
+      --primary-soft: rgba(217, 119, 6, 0.1);
+      --on-primary: #ffffff;
+      --bg-dark: #ffffff;
+      --bg-card: rgba(0, 0, 0, 0.025);
+      --bg-elevated: rgba(0, 0, 0, 0.04);
+      --text-primary: #0a0a0f;
+      --text-secondary: #52525b;
+      --text-muted: #71717a;
+      --border: rgba(0, 0, 0, 0.1);
+      --border-bright: rgba(0, 0, 0, 0.18);
+      --nav-bg: rgba(255, 255, 255, 0.7);
+      --nav-bg-scrolled: rgba(255, 255, 255, 0.92);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,6 +61,8 @@
       color: var(--text-primary);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .mesh-bg {
@@ -36,7 +70,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -1;
-      background: var(--bg-dark);
+      background-color: var(--bg-dark);
     }
 
     /* Navigation */
@@ -44,20 +78,21 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      padding: 1rem 2rem;
-      background: rgba(15, 15, 35, 0.8);
+      padding: 1.1rem 2rem;
+      background: var(--nav-bg);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid transparent;
       transition: all 0.3s ease;
     }
 
     nav.scrolled {
-      padding: 0.75rem 2rem;
-      background: rgba(15, 15, 35, 0.95);
+      padding: 0.85rem 2rem;
+      background: var(--nav-bg-scrolled);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -67,29 +102,36 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
       color: var(--text-primary);
       text-decoration: none;
     }
 
     .nav-logo-mark {
       background-color: var(--primary);
-      color: #1f2937;
+      color: var(--on-primary);
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-weight: 700;
-      padding: 0.4rem 0.75rem;
+      padding: 0.35rem 0.7rem;
       border-radius: 9999px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
@@ -101,7 +143,44 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      padding: 0.55rem 1.1rem;
+      background: var(--primary);
+      color: var(--on-primary);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 9999px;
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+    }
+
+    .theme-toggle svg { width: 15px; height: 15px; }
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
     /* Hero */
     .hero {
@@ -109,29 +188,42 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8rem 2rem 4rem;
+      padding: 9rem 2rem 5rem;
     }
 
-    .hero-content { text-align: center; max-width: 900px; }
+    .hero-content { text-align: center; max-width: 860px; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .eyebrow-dot { display: none; }
 
     .hero h1 {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.75rem, 6vw, 4.5rem);
       font-weight: 600;
-      line-height: 1.3;
-      margin-bottom: 1.25rem;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.75rem;
       animation: fadeInUp 0.6s ease 0.1s both;
     }
 
-    .hero h1 span {
-      color: var(--primary);
-    }
+    .hero h1 .grad { color: var(--primary); }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 1.25rem;
       color: var(--text-secondary);
-      max-width: 550px;
-      margin: 0 auto 2rem;
+      max-width: 600px;
+      line-height: 1.55;
+      margin: 0 auto 2.5rem;
       animation: fadeInUp 0.6s ease 0.2s both;
     }
 
@@ -141,6 +233,33 @@
       justify-content: center;
       flex-wrap: wrap;
       animation: fadeInUp 0.6s ease 0.3s both;
+    }
+
+    .hero-metrics {
+      display: flex;
+      justify-content: center;
+      gap: 3.5rem;
+      margin-top: 4.5rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+
+    .metric { text-align: center; }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .metric-value span { color: var(--primary); }
+
+    .metric-label {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
     }
 
     @keyframes fadeInUp {
@@ -153,10 +272,10 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.875rem;
+      padding: 0.9rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.925rem;
       text-decoration: none;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -165,7 +284,7 @@
 
     .btn-primary {
       background: var(--primary);
-      color: #1f2937;
+      color: var(--on-primary);
     }
 
     .btn-primary:hover {
@@ -173,186 +292,387 @@
     }
 
     .btn-secondary {
-      background: transparent;
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-bright);
     }
 
     .btn-secondary:hover {
-      color: var(--text-primary);
-      border-color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--text-muted);
     }
 
     /* Sections */
     section {
-      padding: 6rem 2rem;
-      max-width: 1400px;
+      padding: 6.5rem 2rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
 
     .section-header h2 {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: clamp(1.875rem, 4vw, 2.875rem);
       font-weight: 600;
-      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
     }
 
     .section-header p {
       color: var(--text-secondary);
-      font-size: 1rem;
-      max-width: 500px;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      max-width: 580px;
       margin: 0 auto;
     }
 
-    /* Cards */
-    .glass-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: border-color 0.2s ease;
-    }
-
-    .glass-card:hover {
-      border-color: var(--border);
-    }
-
-    /* About Grid */
-    .about-grid {
+    /* Problem section */
+    .problem-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
     }
 
-    .about-card h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
+    .problem-card {
+      background: var(--bg-dark);
+      padding: 2.25rem;
+      transition: background 0.25s ease;
+    }
+
+    .problem-card:hover {
+      background: var(--bg-card);
+    }
+
+    .problem-card .q {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      font-size: 1.075rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.015em;
     }
 
-    .about-card p {
+    .problem-card .q svg {
+      width: 19px; height: 19px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .problem-card p {
       color: var(--text-secondary);
-      font-size: 0.9375rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
-    .icon-box {
-      width: 40px; height: 40px;
-      border-radius: 8px;
+    /* Service blocks */
+    .services-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+    }
+
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .service-block:nth-child(even) .service-block-visual { order: -1; }
+
+    .service-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--primary);
+      margin-bottom: 1.5rem;
+      background: var(--primary-soft);
     }
 
-    .icon-box svg { width: 20px; height: 20px; }
+    .service-icon svg { width: 24px; height: 24px; color: var(--primary); }
 
-    /* Services Grid */
-    .services-grid {
+    .service-block h3 {
+      font-size: 1.875rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+
+    .service-block > div > p {
+      color: var(--text-secondary);
+      font-size: 1.075rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .feature-list {
+      list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
     }
 
-    .service-card {
-      background: var(--bg-card);
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .feature-list li svg {
+      width: 16px; height: 16px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* Outcome highlight panel */
+    .service-block-visual {
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color 0.2s ease;
+      border-radius: 18px;
+      padding: 2.5rem;
     }
 
-    .service-card:hover {
-      border-color: var(--primary);
+    .outcome { padding: 1.25rem 0; }
+    .outcome + .outcome { border-top: 1px solid var(--border); }
+
+    .outcome-value {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      line-height: 1;
     }
 
-    .service-icon {
-      width: 44px; height: 44px;
+    .outcome-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Differentiators */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .diff-card {
+      padding: 1.75rem;
+      border-top: 2px solid var(--border);
+      transition: border-color 0.25s ease;
+    }
+
+    .diff-card:hover {
+      border-top-color: var(--primary);
+    }
+
+    .diff-card .diff-icon {
+      width: 40px; height: 40px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      background: var(--primary);
+      background: var(--primary-soft);
+      margin-bottom: 1.1rem;
     }
 
-    .service-icon svg { width: 22px; height: 22px; }
+    .diff-card .diff-icon svg { width: 20px; height: 20px; color: var(--primary); }
 
-    .service-card h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+    .diff-card h3 {
+      font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
 
-    .service-card p {
+    .diff-card p {
       color: var(--text-secondary);
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       line-height: 1.6;
     }
 
-    /* Contact */
-    .contact-card {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 3rem;
-      text-align: center;
+    /* Approach */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
     }
 
-    .contact-card h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.5rem;
+    .step {
+      position: relative;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .step-num {
+      font-size: 0.875rem;
       font-weight: 600;
+      color: var(--text-muted);
       margin-bottom: 0.75rem;
     }
 
-    .contact-card p {
+    .step h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .step p {
       color: var(--text-secondary);
-      font-size: 0.9375rem;
-      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
     }
 
-    .email-link {
-      display: inline-flex;
+    /* Additional capabilities (secondary) */
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .more-card { padding-top: 0.25rem; }
+
+    .more-card .more-icon {
+      width: 36px; height: 36px;
+      display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.875rem 1.75rem;
-      background: var(--primary);
-      color: #1f2937;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      transition: background 0.2s ease;
+      justify-content: center;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
     }
 
-    .email-link:hover {
-      background: var(--primary-dark);
+    .more-card .more-icon svg { width: 22px; height: 22px; }
+
+    .more-card h3 {
+      font-size: 1.075rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.5rem;
+    }
+
+    .more-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .more-note {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .more-note a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+    /* CTA */
+    .cta-band {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cta-inner {
+      text-align: center;
+      padding: 5rem 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-inner p {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      line-height: 1.55;
+      max-width: 580px;
+      margin: 0 auto 2.25rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-email {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cta-email a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
     }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 3rem 2rem;
       border-top: 1px solid var(--border);
-      color: var(--text-secondary);
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--text-muted);
       font-size: 0.875rem;
     }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .footer-brand .nav-logo-mark { font-size: 0.95rem; padding: 0.3rem 0.6rem; }
 
     /* Scroll reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .reveal.active {
@@ -361,15 +681,24 @@
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .problem-grid, .diff-grid, .more-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .service-block { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+      .service-block:nth-child(even) .service-block-visual { order: 0; }
+    }
+
+    @media (max-width: 600px) {
       nav { padding: 1rem; }
       .nav-links { display: none; }
-      .hero { padding: 7rem 1.5rem 3rem; }
-      section { padding: 4rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-      .hero-cta { flex-direction: column; align-items: center; }
+      .hero { padding: 7rem 1.5rem 3.5rem; }
+      section { padding: 4.5rem 1.5rem; }
+      .problem-grid, .diff-grid, .steps, .more-grid { grid-template-columns: 1fr; }
+      .feature-list { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; align-items: stretch; }
+      .hero-metrics { gap: 2rem; }
       .btn { width: 100%; justify-content: center; }
+      .service-block-visual { overflow-x: auto; }
     }
   </style>
 </head>
@@ -382,113 +711,260 @@
         <div class="nav-logo-mark">P</div>
         Premitive
       </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#problems">Challenges</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Premitive</a></li>
+          <li><a href="#approach">Approach</a></li>
+        </ul>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
+        <a href="#contact" class="nav-cta">Book a Call</a>
+      </div>
     </div>
   </nav>
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Building the Future with <span>AI-Powered</span> Solutions</h1>
-      <p>We transform ambitious ideas into intelligent, scalable software. From concept to deployment, we engineer solutions that drive real business impact.</p>
+      <div class="eyebrow"><span class="eyebrow-dot"></span> AI-Augmented Quality Engineering</div>
+      <h1>Ship faster.<br>Break <span class="grad">nothing.</span></h1>
+      <p>Flaky tests, brittle pipelines, and ballooning QA costs slow great teams down. We build self-sustaining, AI-augmented test automation that turns quality into your fastest path to release.</p>
       <div class="hero-cta">
-        <a href="#services" class="btn btn-primary">
-          Explore Services
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <a href="#contact" class="btn btn-primary">
+          Talk to Us
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        <a href="#services" class="btn btn-secondary">Explore Capabilities</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric">
+          <div class="metric-value">70<span>%</span></div>
+          <div class="metric-label">Less manual QA effort</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">3<span>x</span></div>
+          <div class="metric-label">Faster release cycles</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">90<span>%</span></div>
+          <div class="metric-label">Fewer flaky failures</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="about">
+  <section id="problems" class="problem">
     <div class="section-header reveal">
-      <h2>Who We Are</h2>
-      <p>Driven by innovation, powered by intelligence, focused on impact.</p>
+      <span class="section-label">The Reality of Scaling QA</span>
+      <h2>Are you stuck with these?</h2>
+      <p>As engineering teams grow, quality becomes the bottleneck. Sound familiar?</p>
     </div>
-    <div class="about-grid reveal">
-      <div class="glass-card about-card">
-        <h3>
-          <div class="icon-box">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          About Us
-        </h3>
-        <p>We are a startup committed to solving real-world problems by integrating intelligent technology across domains. With a focus on impact, scalability, and simplicity, we aim to build products that make lives better and deliver services that help companies operate smarter, faster, and more efficiently.</p>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Flaky, unreliable tests?</div>
+        <p>Tests that pass one run and fail the next erode trust, block merges, and bury real bugs under noise.</p>
       </div>
-      <div class="glass-card about-card" id="vision">
-        <h3>
-          <div class="icon-box">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
-          </div>
-          Our Vision
-        </h3>
-        <p>To be a trusted name in AI-powered innovation. We aspire to lead the way in applying technology responsibly to empower communities, modernize workflows, and drive efficiency across traditional and modern businesses alike.</p>
+      <div class="problem-card">
+        <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/></svg> Slow, painful regression?</div>
+        <p>Regression cycles that take days delay every release and force teams to choose between speed and confidence.</p>
+      </div>
+      <div class="problem-card">
+        <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg> Brittle CI/CD pipelines?</div>
+        <p>Pipelines that break on every change demand constant babysitting instead of shipping value.</p>
+      </div>
+      <div class="problem-card">
+        <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Rising QA maintenance costs?</div>
+        <p>Every new feature multiplies test maintenance, quietly draining engineering hours and budget.</p>
+      </div>
+      <div class="problem-card">
+        <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg> No performance visibility?</div>
+        <p>Shipping without performance benchmarking means latency and load issues surface in production, not before.</p>
+      </div>
+      <div class="problem-card">
+        <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Slipping release velocity?</div>
+        <p>When QA can't keep pace with development, release confidence drops and roadmaps slip.</p>
       </div>
     </div>
   </section>
 
   <section id="services">
     <div class="section-header reveal">
-      <h2>Our Services</h2>
-      <p>End-to-end solutions engineered for scale and intelligence.</p>
+      <span class="section-label">What We Do</span>
+      <h2>Quality engineering, reimagined with AI</h2>
+      <p>Two core practices that turn testing from a cost center into a competitive advantage.</p>
     </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+    <div class="services-stack">
+      <div class="service-block reveal">
+        <div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3>AI-Augmented Testing &amp; QA</h3>
+          <p>Resilient, self-healing automation that scales with your codebase. We design test architectures that catch real regressions early, run fast, and stay green — across UI, API, and end-to-end layers.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Regression intelligence</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Self-healing test suites</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Performance benchmarking</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Flake detection &amp; triage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> UI, API &amp; E2E coverage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AI-generated test cases</li>
+          </ul>
         </div>
-        <h3>AI-Driven Software Development</h3>
-        <p>We deliver end-to-end software solutions that are scalable, user-centric, and production-ready. Our development pipeline is strongly powered by AI — from intelligent code generation and architectural planning to performance tuning and observability.</p>
+        <div class="service-block-visual">
+          <div class="outcome">
+            <div class="outcome-value">70%</div>
+            <div class="outcome-label">Reduction in manual QA effort</div>
+          </div>
+          <div class="outcome">
+            <div class="outcome-value">4x</div>
+            <div class="outcome-label">Faster regression cycles</div>
+          </div>
+          <div class="outcome">
+            <div class="outcome-value">~0</div>
+            <div class="outcome-label">Flaky failures after stabilization</div>
+          </div>
+        </div>
       </div>
 
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m7.8 16.2-2.9 2.9"/><path d="M6 12H2"/><path d="m7.8 7.8-2.9-2.9"/></svg>
+      <div class="service-block reveal">
+        <div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          </div>
+          <h3>AI Workflows &amp; Pipeline Intelligence</h3>
+          <p>We embed AI directly into your delivery pipeline — automating the repetitive, surfacing the critical, and turning every CI run into a source of insight. Faster feedback, fewer surprises, smarter releases.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Intelligent CI/CD gates</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anomaly &amp; root-cause analysis</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Automated triage &amp; routing</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Test impact analysis</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Quality dashboards</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Shift-left automation</li>
+          </ul>
         </div>
-        <h3>Custom Utility Development</h3>
-        <p>We create lightweight, high-performance tools tailored for automation, monitoring, reporting, and seamless operations. From productivity hacks to backend data handlers, our utilities are built for real-world scale and simplicity.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+        <div class="service-block-visual">
+          <div class="outcome">
+            <div class="outcome-value">64%</div>
+            <div class="outcome-label">Faster CI builds via test impact analysis</div>
+          </div>
+          <div class="outcome">
+            <div class="outcome-value">3x</div>
+            <div class="outcome-label">Quicker root-cause identification</div>
+          </div>
+          <div class="outcome">
+            <div class="outcome-value">24/7</div>
+            <div class="outcome-label">Automated anomaly detection</div>
+          </div>
         </div>
-        <h3>AI-Enhanced Testing & QA</h3>
-        <p>We blend traditional QA with cutting-edge AI validation to ensure your products are robust, secure, and regression-proof. Using AI models for test case generation, root cause analysis, and anomaly detection.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-        </div>
-        <h3>Integration Services</h3>
-        <p>We design seamless integrations between systems, apps, and services — whether it's legacy on-prem infrastructure or modern cloud-native stacks. Our solutions ensure smooth data flow, API orchestration, and cross-platform compatibility.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="why">
     <div class="section-header reveal">
-      <h2>Let's Work Together</h2>
-      <p>Have a project in mind? We'd love to hear about it.</p>
+      <span class="section-label">Why Premitive</span>
+      <h2>Your differentiator in quality</h2>
+      <p>We don't just write tests. We engineer release confidence.</p>
     </div>
-    <div class="glass-card contact-card reveal">
-      <h3>Ready to start?</h3>
-      <p>Drop us a line and let's discuss how we can help transform your ideas into reality.</p>
-      <a href="mailto:admin@premitive.in" class="email-link">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        admin@premitive.in
-      </a>
+    <div class="diff-grid reveal">
+      <div class="diff-card">
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <h3>Regression Intelligence</h3>
+        <p>AI pinpoints what actually changed and what's at risk — so you test smarter, not harder, and catch regressions before they ship.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-3 7h5l-3 7"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Performance Benchmarking</h3>
+        <p>Continuous load and latency benchmarking baked into your pipeline, catching degradations long before your users ever feel them.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3>Self-Healing Automation</h3>
+        <p>Test suites that adapt to UI and API changes automatically — slashing maintenance overhead and keeping pipelines green.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="section-header reveal">
+      <span class="section-label">How We Work</span>
+      <h2>From bottleneck to breakthrough</h2>
+      <p>A pragmatic, low-friction engagement designed to deliver value in weeks, not quarters.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Assess</h3>
+        <p>We audit your current test suites, pipelines, and pain points to map where quality leaks the most.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Architect</h3>
+        <p>We design a resilient, AI-augmented test and automation strategy tailored to your stack and velocity goals.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Automate</h3>
+        <p>We build self-healing suites and intelligent pipeline gates, integrated cleanly into your existing CI/CD.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Accelerate</h3>
+        <p>We tune for speed and signal, hand over dashboards, and leave your team shipping with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="more">
+    <div class="section-header reveal">
+      <span class="section-label">Beyond Quality</span>
+      <h2>The wider engineering toolkit</h2>
+      <p>Quality is our core. But the same team also builds the software and integrations that surround it — so you can consolidate trusted partners.</p>
+    </div>
+    <div class="more-grid reveal">
+      <div class="more-card">
+        <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+        <h3>Custom Utility Development</h3>
+        <p>Lightweight, purpose-built tools for automation, monitoring, and reporting that remove the manual work slowing your team down.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <h3>Integration Development</h3>
+        <p>Seamless connections across apps, APIs, and legacy or cloud-native systems — reliable data flow with quality built in from day one.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v2"/><path d="M15 1v2"/><path d="M9 21v2"/><path d="M15 21v2"/></svg></div>
+        <h3>Software Engineering</h3>
+        <p>End-to-end, production-ready software delivery — architected for scale and shipped on a foundation of test-first engineering.</p>
+      </div>
+    </div>
+    <div class="more-note reveal">Need something specific? <a href="mailto:admin@premitive.in">Let's talk</a> about your roadmap.</div>
+  </section>
+
+  <section id="contact" class="cta-band">
+    <div class="cta-inner reveal">
+      <h2>Let's make quality your fastest path to release.</h2>
+      <p>Tell us where testing slows you down. We'll show you what AI-augmented quality engineering can unlock for your team.</p>
+      <div class="cta-actions">
+        <a href="mailto:admin@premitive.in" class="btn btn-primary">
+          Book a Call
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:admin@premitive.in" class="btn btn-secondary">Email Us</a>
+      </div>
+      <div class="cta-email">or reach us directly at <a href="mailto:admin@premitive.in">admin@premitive.in</a></div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Premitive Digital Solutions Pvt Ltd. All rights reserved.
+    <div class="footer-brand">
+      <div class="nav-logo-mark">P</div>
+      Premitive
+    </div>
+    <div>&copy; 2025 Premitive Digital Solutions Pvt Ltd. All rights reserved.</div>
   </footer>
 
   <script>
@@ -517,6 +993,15 @@
     }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const next = isLight ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
   </script>
 </body>
 </html>
