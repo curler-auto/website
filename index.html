@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
     (function () {
       var saved = localStorage.getItem('theme');
@@ -714,15 +716,15 @@
       <div class="nav-right">
         <ul class="nav-links">
           <li><a href="#problems">Challenges</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#why">Why Premitive</a></li>
+          <li><a href="#moat">Our Moat</a></li>
+          <li><a href="#other">Other Services</a></li>
           <li><a href="#approach">Approach</a></li>
         </ul>
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
-        <a href="#contact" class="nav-cta">Book a Call</a>
+        <a href="https://calendly.com/dinesh-premitive/30min" class="nav-cta js-book" target="_blank" rel="noopener">Book a Call</a>
       </div>
     </div>
   </nav>
@@ -733,11 +735,11 @@
       <h1>Ship faster.<br>Break <span class="grad">nothing.</span></h1>
       <p>Flaky tests, brittle pipelines, and ballooning QA costs slow great teams down. We build self-sustaining, AI-augmented test automation that turns quality into your fastest path to release.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">
-          Talk to Us
+        <a href="https://calendly.com/dinesh-premitive/30min" class="btn btn-primary js-book" target="_blank" rel="noopener">
+          Book a Call
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a href="#services" class="btn btn-secondary">Explore Capabilities</a>
+        <a href="#moat" class="btn btn-secondary">Explore Capabilities</a>
       </div>
       <div class="hero-metrics">
         <div class="metric">
@@ -790,11 +792,11 @@
     </div>
   </section>
 
-  <section id="services">
+  <section id="moat">
     <div class="section-header reveal">
-      <span class="section-label">What We Do</span>
+      <span class="section-label">Our Moat</span>
       <h2>Quality engineering, reimagined with AI</h2>
-      <p>Two core practices that turn testing from a cost center into a competitive advantage.</p>
+      <p>Deep, AI-augmented quality engineering is hard to replicate — it's the defensible core we build into every release, turning testing from a cost center into a competitive advantage.</p>
     </div>
     <div class="services-stack">
       <div class="service-block reveal">
@@ -918,11 +920,11 @@
     </div>
   </section>
 
-  <section id="more">
+  <section id="other">
     <div class="section-header reveal">
-      <span class="section-label">Beyond Quality</span>
+      <span class="section-label">Other Services</span>
       <h2>The wider engineering toolkit</h2>
-      <p>Quality is our core. But the same team also builds the software and integrations that surround it — so you can consolidate trusted partners.</p>
+      <p>Quality is our moat. But the same team also builds the software and integrations that surround it — so you can consolidate trusted partners.</p>
     </div>
     <div class="more-grid reveal">
       <div class="more-card">
@@ -949,7 +951,7 @@
       <h2>Let's make quality your fastest path to release.</h2>
       <p>Tell us where testing slows you down. We'll show you what AI-augmented quality engineering can unlock for your team.</p>
       <div class="cta-actions">
-        <a href="mailto:admin@premitive.in" class="btn btn-primary">
+        <a href="https://calendly.com/dinesh-premitive/30min" class="btn btn-primary js-book" target="_blank" rel="noopener">
           Book a Call
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1001,6 +1003,19 @@
       const next = isLight ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+    });
+
+    // Calendly booking — set your scheduling link here
+    const CALENDLY_URL = 'https://calendly.com/dinesh-premitive/30min';
+    document.querySelectorAll('.js-book').forEach(el => {
+      el.setAttribute('href', CALENDLY_URL);
+      el.addEventListener('click', (e) => {
+        if (window.Calendly) {
+          e.preventDefault();
+          window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+        }
+        // else: fall back to opening the link directly
+      });
     });
   </script>
 </body>
