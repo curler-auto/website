@@ -134,6 +134,7 @@
     .h2 { font-family: var(--head); font-weight: 700; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px; max-width: 800px; }
     .lede { font-size: 18px; color: var(--muted); max-width: 660px; margin-bottom: 48px; }
 
+
     /* Try it demo */
     .demo { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
     .demo-tabs { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; border-bottom: 1px solid var(--line); background: var(--bg-2); align-items: center; }
@@ -249,6 +250,42 @@
     .foot .logo-word { font-size: 17px; }
     .foot .logo svg { width: 24px; height: 24px; }
 
+
+    /* Two sides */
+    .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .side { display: block; text-decoration: none; border: 1px solid var(--line); background: var(--surface); border-radius: 18px; padding: 36px; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .side:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--line-2); }
+    .side.dark { background: var(--text); border-color: var(--text); color: #fff; }
+    .side-k { display: inline-block; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; margin-bottom: 20px; }
+    .side.dark .side-k { color: #8FD3AE; background: rgba(143,211,174,0.12); }
+    .side h3 { font-family: var(--head); font-size: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
+    .side p { font-size: 16px; color: var(--muted); margin-bottom: 22px; }
+    .side.dark p { color: #C3CBC7; }
+    .side-go { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; }
+    .side-go svg { width: 16px; height: 16px; transition: transform .2s; }
+    .side:hover .side-go svg { transform: translateX(3px); }
+    /* QA by agents */
+    .feed { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+    .feed-list { list-style: none; padding: 8px 18px; height: 300px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .feed-list li { display: flex; gap: 10px; align-items: baseline; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; animation: rise .35s ease; }
+    .feed-list li:first-child { border-top: 0; }
+    .feed-list li b { font-family: var(--mono); font-size: 10.5px; font-weight: 500; width: 74px; text-align: center; padding: 2px 0; border-radius: 6px; flex-shrink: 0; }
+    .feed-list li span.t { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-left: auto; padding-left: 10px; white-space: nowrap; }
+    .k-explore { color: #1D4E89; background: #E8F0FA; }
+    .k-write { color: #6B3FA0; background: #F2ECFA; }
+    .k-run { color: var(--warn); background: #FEF6E4; }
+    .k-pass { color: var(--accent-text); background: var(--accent-soft); }
+    .k-bug { color: var(--fail); background: var(--fail-soft); }
+    .k-heal { color: #0F6E73; background: #E5F4F4; }
+    .feed-foot { display: flex; justify-content: space-between; padding: 10px 18px; border-top: 1px solid var(--line); background: var(--bg-2); font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+    .cap { border: 1px solid var(--line); border-radius: var(--r); padding: 26px; background: var(--surface); transition: border-color .2s, transform .2s; }
+    .cap:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .cap-n { font-family: var(--mono); font-size: 12px; color: var(--accent-text); }
+    .cap h3 { font-family: var(--head); font-size: 20px; font-weight: 600; margin: 8px 0 6px; }
+    .cap p { font-size: 15px; color: var(--muted); }
+    @media (max-width: 980px) { .sides { grid-template-columns: 1fr; } .cap-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 620px) { .cap-grid { grid-template-columns: 1fr; } .side { padding: 26px; } .side h3 { font-size: 24px; } }
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.on { opacity: 1; transform: none; }
 
@@ -285,12 +322,9 @@
         <span class="logo-word">premitive</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#try">Try it</a></li>
-        <li><a href="#primitives">Primitives</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#compliance">Compliance</a></li>
-        <li><a href="#build">Custom agents</a></li>
-        <li><a href="#services">Agentic QA</a></li>
+        <li><a href="#qa-for-agents">QA for agents</a></li>
+        <li><a href="#qa-by-agents">QA by agents</a></li>
+        <li><a href="#custom">Custom agents</a></li>
       </ul>
       <a href="#" class="btn btn-primary btn-sm" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
     </div>
@@ -306,7 +340,7 @@
         <div class="hero-cta">
           <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Test your agent
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a href="#try" class="btn btn-ghost">Try it yourself</a>
+          <a href="#qa-for-agents" class="btn btn-ghost">Try it yourself</a>
         </div>
         <div class="prims" id="heroPrims" aria-label="The six primitives we prove">
           <span data-p="Actions">Actions</span><span data-p="Tools">Tools</span><span data-p="Decisions">Decisions</span><span data-p="Data">Data</span><span data-p="Security">Security</span><span data-p="Compliance">Compliance</span>
@@ -326,7 +360,7 @@
           <div class="rows" id="liveRows"></div>
           <div class="finding" id="liveFinding">
             <p>The agent issued a £640 refund and skipped the approval step. <code>approval_required</code> was ignored after the model change.</p>
-            <div class="finding-actions"><a href="#try">&#9654; Replay this failure</a><span>Root cause</span></div>
+            <div class="finding-actions"><a href="#qa-for-agents">&#9654; Replay this failure</a><span>Root cause</span></div>
           </div>
           <div class="note">Illustration of a test run</div>
         </div>
@@ -341,10 +375,33 @@
     </div>
   </div>
 
-  <!-- TRY IT -->
-  <section id="try">
+  <!-- TWO SIDES -->
+  <section class="alt" id="agentic-quality">
     <div class="wrap">
-      <span class="kicker reveal">Try it</span>
+      <span class="kicker reveal">Agentic quality, both ways</span>
+      <h2 class="h2 reveal">We test AI agents. And our AI agents test your software.</h2>
+      <p class="lede reveal">Two sides of the same expertise: years of making software testing reliable, now built for a world where agents do the work.</p>
+      <div class="sides reveal">
+        <a class="side" href="#qa-for-agents">
+          <span class="side-k">QA for agents</span>
+          <h3>Prove the agents you build or buy.</h3>
+          <p>Every primitive tested in your real application: actions, tools, decisions, data, security and compliance. A replay for every failure, and a gate before release.</p>
+          <span class="side-go">See it run <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <a class="side dark" href="#qa-by-agents">
+          <span class="side-k">QA by agents</span>
+          <h3>Let testing agents cover your software.</h3>
+          <p>Agents that explore your app, write and run tests, keep suites current and triage failures, with our engineers reviewing every result.</p>
+          <span class="side-go">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRY IT -->
+  <section id="qa-for-agents">
+    <div class="wrap">
+      <span class="kicker reveal">QA for agents · Try it</span>
       <h2 class="h2 reveal">Watch a test run on a real agent journey.</h2>
       <p class="lede reveal">A sample support agent with made-up data. Pick a scenario, press run, and see every step Premitive checks.</p>
       <div class="demo reveal">
@@ -487,8 +544,36 @@
     </div>
   </section>
 
-  <!-- BUILD -->
-  <section id="build">
+  <!-- QA BY AGENTS -->
+  <section id="qa-by-agents">
+    <div class="wrap">
+      <div class="split" style="align-items:start">
+        <div>
+          <span class="kicker reveal">QA by agents</span>
+          <h2 class="h2 reveal">Testing agents that never sleep. Engineers who stay accountable.</h2>
+          <p class="lede reveal" style="margin-bottom:28px">Our agents do the heavy lifting of testing your software on every change. Our engineers design the strategy, review the results and own the outcome.</p>
+          <a href="#" class="btn btn-primary reveal" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Put agents on your QA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="feed reveal" aria-label="Animated illustration of a testing agent at work">
+          <div class="live-top"><div class="dots"><i></i><i></i><i></i></div><span class="live-badge"><i></i>Testing agent at work</span></div>
+          <ul class="feed-list" id="feedList"></ul>
+          <div class="feed-foot"><span>Illustration</span><span id="feedCount">0 tests this session</span></div>
+        </div>
+      </div>
+      <div class="cap-grid reveal">
+        <div class="cap"><span class="cap-n">01</span><h3>Explore</h3><p>Agents map your application screen by screen and surface the journeys nobody is testing.</p></div>
+        <div class="cap"><span class="cap-n">02</span><h3>Write</h3><p>Test cases drafted from your stories, tickets and docs, then reviewed by our engineers.</p></div>
+        <div class="cap"><span class="cap-n">03</span><h3>Run</h3><p>UI, API and end-to-end suites on every change, with test impact analysis so only what matters runs.</p></div>
+        <div class="cap"><span class="cap-n">04</span><h3>Maintain</h3><p>Suites kept current as your product changes, so tests stop breaking every release.</p></div>
+        <div class="cap"><span class="cap-n">05</span><h3>Triage</h3><p>Real bugs separated from flaky tests and environment noise, each with a root cause.</p></div>
+        <div class="cap"><span class="cap-n">06</span><h3>Benchmark</h3><p>Load and latency checks in the pipeline, catching slowdowns before your users do.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOM -->
+  <section id="custom" class="alt">
     <div class="wrap">
       <div class="build reveal">
         <div>
@@ -504,23 +589,10 @@
           <div class="bs"><span>04</span><div><b>Run</b><p>Re-tested on every change, with replays when something fails.</p></div></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="alt">
-    <div class="wrap">
-      <span class="kicker reveal">Agentic QA &amp; augmented engineering</span>
-      <h2 class="h2 reveal">AI agents that test your software, and engineers who build with them.</h2>
-      <p class="lede reveal">The same team that proves your agents also uses agents to make your conventional testing and delivery faster and more reliable.</p>
-      <div class="svc reveal">
-        <div><h3>Agentic QA</h3><p>Testing agents that explore your application, write and run test cases, and keep suites up to date as the product changes, reviewed by our engineers.</p></div>
-        <div><h3>Augmented engineering</h3><p>Engineers working with AI coding and testing tools, with test-first guardrails so speed never costs quality.</p></div>
-        <div><h3>Test automation and regression</h3><p>Resilient UI, API and end-to-end suites, flake triage and test impact analysis that runs what matters.</p></div>
-        <div><h3>Performance benchmarking</h3><p>Load and latency checks in the pipeline, before users feel a slowdown.</p></div>
-        <div><h3>Pipeline intelligence</h3><p>Smart CI/CD gates, root-cause analysis, automated triage and quality dashboards.</p></div>
-        <div><h3>Integrations and software</h3><p>Reliable integrations across apps, APIs and legacy systems, and production-ready software built test-first.</p></div>
-        
+      <div class="svc reveal" style="margin-top:24px">
+        <div><h3>Augmented engineering</h3><p>Our engineers build with AI coding and testing tools, with test-first guardrails so speed never costs quality.</p></div>
+        <div><h3>Integrations</h3><p>Reliable connections between your agents, apps, APIs and legacy systems, tested end to end.</p></div>
+        <div><h3>Software engineering</h3><p>Production-ready software and utilities delivered end to end, on a test-first foundation.</p></div>
       </div>
       <p class="svc-note reveal">Need something specific? <a href="mailto:admin@premitive.in">Let's talk</a> about your roadmap.</p>
     </div>
@@ -623,6 +695,42 @@
       later(runLive, end + 7000);
     }
     runLive();
+
+    /* QA by agents feed */
+    var feedEvents = [
+      ['k-explore','EXPLORE','Mapped checkout flow: 14 screens'],
+      ['k-write','WRITE','Drafted 6 tests from story PAY-212'],
+      ['k-run','RUN','Regression suite started for build 4.18'],
+      ['k-pass','PASS','Login and SSO journeys: 22 of 22'],
+      ['k-heal','MAINTAIN','Updated 3 tests after button rename'],
+      ['k-bug','BUG','Discount applied twice at checkout'],
+      ['k-explore','EXPLORE','Found untested path: refund on partial order'],
+      ['k-write','WRITE','Added 4 edge cases for refunds'],
+      ['k-run','TRIAGE','2 failures: 1 real bug, 1 environment issue'],
+      ['k-pass','PASS','API contract checks: 148 of 148'],
+      ['k-run','BENCH','Search p95 latency 410 ms, within budget'],
+      ['k-heal','MAINTAIN','Quarantined 1 flaky test, root cause noted']
+    ];
+    var feedList = document.getElementById('feedList');
+    var feedCount = document.getElementById('feedCount');
+    if (feedList) {
+      var fi = 0, tests = 0;
+      var addFeed = function () {
+        var e = feedEvents[fi % feedEvents.length]; fi++;
+        var li = document.createElement('li');
+        var b = document.createElement('b'); b.className = e[0]; b.textContent = e[1];
+        var sp = document.createElement('span'); sp.textContent = e[2];
+        var t = document.createElement('span'); t.className = 't'; t.textContent = 'now';
+        li.appendChild(b); li.appendChild(sp); li.appendChild(t);
+        feedList.querySelectorAll('span.t').forEach(function (x, i, all) { var ago = (all.length - i) * 2; x.textContent = ago + 's ago'; });
+        feedList.appendChild(li);
+        while (feedList.children.length > 7) { feedList.removeChild(feedList.firstChild); }
+        tests += 3 + (fi % 5); feedCount.textContent = tests + ' tests this session';
+      };
+      for (var q = 0; q < 5; q++) { addFeed(); }
+      if (!reduce) { setInterval(addFeed, 1900); }
+    }
+
 
     /* Try it demo */
     var scenarios = [
