@@ -482,6 +482,52 @@
     .nf-more { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: var(--muted); }
     .nf-more span:not(:first-child) { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--surface); color: var(--text); }
     @media (max-width: 980px) { .nf { grid-template-columns: 1fr; } }
+
+    /* Restructure */
+    .hp-k { font-family: var(--mono); font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; align-self: center; margin-right: 4px; }
+    .offs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .off { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--r); padding: 26px; background: var(--surface); text-decoration: none; color: var(--text); transition: border-color .2s, transform .2s; }
+    .off:hover { border-color: var(--text); transform: translateY(-2px); }
+    .off-k { font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .off h3 { font-family: var(--head); font-size: 22px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 8px; }
+    .off p { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+    .off .side-go { margin-top: auto; }
+    .off-main { background: var(--text); color: #fff; border-color: var(--text); }
+    .off-main p, .off-main .off-k { color: #C3CBC7; }
+    .off-main .side-go { color: #8FD1AE; }
+    @media (max-width: 1100px) { .offs { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 620px) { .offs { grid-template-columns: 1fr; } }
+    .vs { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); overflow: hidden; box-shadow: 0 20px 40px -28px rgba(15,20,18,.25); }
+    .vs-tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+    .vs-tabs button { border: 0; background: none; font: inherit; font-size: 14.5px; padding: 14px; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
+    .vs-tabs button.on { color: var(--text); font-weight: 600; border-bottom-color: var(--accent); background: var(--surface); }
+    .vs-body { padding: 22px; display: grid; gap: 14px; }
+    .vs-pane { display: grid; gap: 10px; }
+    .vs-pane[hidden] { display: none; }
+    .vs .verdict2 { margin-top: 6px; }
+    .lvls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: -20px 0 40px; }
+    .lvl { display: block; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--surface); text-decoration: none; color: var(--text); }
+    .lvl b { display: block; font-family: var(--head); font-size: 16px; margin-bottom: 2px; }
+    .lvl span { font-size: 13.5px; color: var(--muted); }
+    a.lvl:hover { border-color: var(--text); }
+    .lvl-on { border-color: var(--accent); background: var(--accent-soft); }
+    @media (max-width: 760px) { .lvls { grid-template-columns: 1fr 1fr; } }
+
+    /* Pricing */
+    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+    .plan { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--r); padding: 28px; background: var(--surface); }
+    .plan-k { font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; display: flex; gap: 8px; align-items: center; }
+    .plan-tag { text-transform: none; letter-spacing: 0; font-family: var(--body, inherit); font-size: 12px; background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 999px; }
+    .plan h3 { font-family: var(--head); font-size: 22px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 8px; }
+    .plan-price { font-size: 15px; color: var(--accent-text); font-weight: 600; margin-bottom: 20px; }
+    .plan ul { list-style: none; display: grid; gap: 10px; margin-bottom: 26px; }
+    .plan li { display: flex; gap: 10px; font-size: 15px; color: var(--muted); }
+    .plan li svg { width: 18px; height: 18px; flex: 0 0 18px; color: var(--accent); margin-top: 2px; }
+    .plan li b { color: var(--text); font-weight: 600; }
+    .plan .btn { margin-top: auto; align-self: flex-start; }
+    .plan-main { border-color: var(--text); box-shadow: 0 20px 40px -28px rgba(15,20,18,.3); }
+    .plans-note { margin-top: 24px; color: var(--muted); font-size: 15px; }
+    @media (max-width: 980px) { .plans { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -493,18 +539,11 @@
         <span class="logo-word">premitive</span>
       </a>
       <ul class="nav-links">
-        <li class="dd">
-          <button class="dd-btn" id="ddBtn" aria-haspopup="true" aria-expanded="false" aria-controls="ddMenu">Primitives <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-          <div class="dd-menu" id="ddMenu">
-            <a class="dd-top" href="#test-cases"><b>See sample test cases</b><small>Simple to complex, across industries</small></a>
-            <a class="dd-top" href="#nonfunctional"><b>Non-functional tests</b><small>Context, compaction, load, drift, cost</small></a>
-            <div class="dd-label">The six primitives we prove</div>
-            <ul role="menu"><li><a href="#p-actions" role="menuitem"><span class="dd-dot"></span><span><b>Actions</b><small>Every action is the one that should happen</small></span></a></li><li><a href="#p-tools" role="menuitem"><span class="dd-dot"></span><span><b>Tools</b><small>Every tool and API call is safe and correct</small></span></a></li><li><a href="#p-decisions" role="menuitem"><span class="dd-dot"></span><span><b>Decisions</b><small>The right path at every branch</small></span></a></li><li><a href="#p-data" role="menuitem"><span class="dd-dot"></span><span><b>Data</b><small>No personal or confidential data leaks</small></span></a></li><li><a href="#p-security" role="menuitem"><span class="dd-dot"></span><span><b>Security</b><small>Resists injection, escapes and misuse</small></span></a></li><li><a href="#p-compliance" role="menuitem"><span class="dd-dot"></span><span><b>Compliance</b><small>Matches your policies, with evidence</small></span></a></li></ul>
-          </div>
-        </li>
+        <li><a href="#test-cases">QA for agents</a></li>
         <li><a href="#qa-by-agents">QA by agents</a></li>
         <li><a href="#custom">Custom agents</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
       </ul>
       <div class="nav-right">
         <a href="#" class="btn btn-primary btn-sm nav-book" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
@@ -513,15 +552,11 @@
     </div>
     <div class="m-menu" id="mMenu" hidden>
       <div class="wrap">
-        <button class="m-group" id="mGroupBtn" aria-expanded="false" aria-controls="mGroup">Primitives <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="m-sub" id="mGroup" hidden>
-          <a href="#test-cases" class="m-live">See sample test cases</a>
-          <a href="#nonfunctional" class="m-live">Non-functional tests</a>
-          <div class="m-prims"><a href="#p-actions">Actions</a><a href="#p-tools">Tools</a><a href="#p-decisions">Decisions</a><a href="#p-data">Data</a><a href="#p-security">Security</a><a href="#p-compliance">Compliance</a></div>
-        </div>
+        <a class="m-link" href="#test-cases">QA for agents</a>
         <a class="m-link" href="#qa-by-agents">QA by agents</a>
         <a class="m-link" href="#custom">Custom agents</a>
         <a class="m-link" href="#services">Services</a>
+        <a class="m-link" href="#pricing">Pricing</a>
         <a href="#" class="btn btn-primary m-cta" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
         <a class="m-mail" href="mailto:admin@premitive.in">admin@premitive.in</a>
       </div>
@@ -534,10 +569,10 @@
       <div class="hero-head">
         <div class="pill"><i></i>Every primitive, pre-proven.</div>
         <h1>Prove your AI agents work. <em>Before they go live.</em></h1>
-        <p class="sub">Independent testing for every AI agent you run. We send your agent real test inputs, track everything it does in your systems, and prove each primitive it is built from, with evidence you can ship and audit on.</p>
+        <p class="sub">We test your AI agents the way people use them, in your real systems. You see what the agent did, what it got wrong, and the proof.</p>
         <div class="hero-cta">
           <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Test your agent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a href="#primitives" class="btn btn-ghost">The six primitives</a>
+          <a href="#pricing" class="btn btn-ghost">See pricing</a>
         </div>
       </div>
 
@@ -551,15 +586,15 @@
           <div class="cases" role="tablist" aria-label="Test cases" id="cases"></div>
           <div class="case" id="case" role="tabpanel" aria-live="polite">
             <div class="case-meta"><span id="cAgent"></span><span class="case-tags"><span class="case-lv" id="cLv"></span><span class="case-prim" id="cPrim"></span></span></div>
-            <div class="blk"><div class="blk-k">Test input</div><div class="bubble in" id="cInput"></div></div>
-            <div class="blk step2"><div class="blk-k">Agent response</div><div class="bubble out" id="cOutput"></div></div>
-            <div class="blk step3"><div class="blk-k">Tracked in the application</div><ul class="tracked" id="cTracked"></ul></div>
+            <div class="blk"><div class="blk-k">We sent</div><div class="bubble in" id="cInput"></div></div>
+            <div class="blk step2"><div class="blk-k">It said</div><div class="bubble out" id="cOutput"></div></div>
+            <div class="blk step3"><div class="blk-k">What it actually did</div><ul class="tracked" id="cTracked"></ul></div>
             <div class="blk step4"><div class="blk-k">Checks</div><ul class="checks" id="cChecks"></ul></div>
             <div class="verdict2 step5" id="cVerdict"><b id="cVTag"></b><span id="cVText"></span><span class="v-links">Replay · Evidence</span></div>
           </div>
         </div>
       </div>
-      <div class="prims hero-prims" id="heroPrims" aria-label="The six primitives we prove">
+      <div class="prims hero-prims" id="heroPrims" aria-label="What every test proves"><small class="hp-k">We check</small>
         <span data-p="Actions">Actions</span><span data-p="Tools">Tools</span><span data-p="Decisions">Decisions</span><span data-p="Data">Data</span><span data-p="Security">Security</span><span data-p="Compliance">Compliance</span>
       </div>
     </div>
@@ -567,7 +602,7 @@
 
   <div class="strip">
     <div class="wrap">
-      <p>If you run an agent, test it with Premitive. Whatever it is built on:</p>
+      <p>We test agents built with</p>
       <div class="strip-list"><span>Custom-built agents</span><span>Workflow automations: n8n, Make, Zapier</span><span>Open-source frameworks</span><span>Vendor agent platforms</span><span>Browser agents</span><span>Chat and voice assistants</span></div>
     </div>
   </div>
@@ -577,95 +612,90 @@
   <section id="why">
     <div class="wrap">
       <span class="kicker reveal">Sound familiar?</span>
-      <h2 class="h2 reveal">Your agents are live. Can anyone prove what they actually do?</h2>
-      <p class="lede reveal">Agents now refund, update, email and approve inside your systems. Most teams find out what went wrong from a customer, an auditor or a bill.</p>
+      <h2 class="h2 reveal">Your agent sounds right. Is it doing the right thing?</h2>
+      <p class="lede reveal">Most teams find out from a customer, an auditor or the bill.</p>
       <div class="pains reveal">
         <div class="pain">
           <div class="pain-k">Engineering and product</div>
           <q>It worked in the demo. Then a customer got two refunds.</q>
-          <q>Every prompt or model change, we hold our breath and ship.</q>
-          <div class="pain-a"><b>With Premitive</b>Every journey re-run on every change, checked in your real systems, and repeated until it passes every time.</div>
+          <q>Every time we change a prompt, we hold our breath.</q>
+          <div class="pain-a"><b>What we do</b>Re-run every journey on every change, in your real systems.</div>
         </div>
         <div class="pain">
-          <div class="pain-k">Operations and automation</div>
+          <div class="pain-k">Operations</div>
           <q>Someone built an n8n flow that writes to our CRM. Nobody tested it.</q>
           <q>The email step timed out, retried, and sent the invoice three times.</q>
-          <div class="pain-a"><b>With Premitive</b>We read the workflow, test every branch, break every connection on purpose, and check what changed in each system.</div>
+          <div class="pain-a"><b>What we do</b>Test every branch of the flow, and break each connection on purpose.</div>
         </div>
         <div class="pain">
-          <div class="pain-k">Risk, security and compliance</div>
-          <q>Our governance tool says the agent is approved. It can't tell me the agent works.</q>
-          <q>The auditor asked how the agent was tested. We had a spreadsheet and a screenshot.</q>
-          <div class="pain-a"><b>With Premitive</b>Independent test evidence, mapped to your controls and delivered to the GRC or audit tool you already report from.</div>
+          <div class="pain-k">Risk and compliance</div>
+          <q>Our governance tool says the agent is approved. It can't tell me it works.</q>
+          <q>The auditor asked how we tested it. We had a screenshot.</q>
+          <div class="pain-a"><b>What we do</b>Give you test evidence, mapped to your controls, ready for audit.</div>
         </div>
       </div>
       <div class="pains-foot reveal">
-        <span>If one of these sounds like your week, start with one agent.</span>
-        <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a pilot call</a>
+        <span>Sounds like your week? Start with one agent.</span>
+        <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a call</a>
       </div>
     </div>
   </section>
 
-  <!-- TWO SIDES -->
-  <section class="alt" id="agentic-quality">
-    <div class="wrap">
-      <span class="kicker reveal">Agentic quality, both ways</span>
-      <h2 class="h2 reveal">We test AI agents. And our AI agents test your software.</h2>
-      <p class="lede reveal">Two sides of the same expertise: years of making software testing reliable, now built for a world where agents do the work.</p>
-      <div class="sides reveal">
-        <a class="side" href="#test-cases">
-          <span class="side-k">Agent testing</span>
-          <h3>Prove the agents you build or buy.</h3>
-          <p>Every primitive tested in your real application: actions, tools, decisions, data, security and compliance. A replay for every failure, and a gate before release.</p>
-          <span class="side-go">See test cases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
-        <a class="side dark" href="#qa-by-agents">
-          <span class="side-k">QA by agents</span>
-          <h3>Let testing agents cover your software.</h3>
-          <p>Agents that explore your app, write and run tests, keep suites current and triage failures, with our engineers reviewing every result.</p>
-          <span class="side-go">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </a>
+  <!-- WHY: MODEL EVAL VS AGENT TEST -->
+  <section class="alt" id="why-agents">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <span class="kicker reveal">Testing the model isn't testing the agent</span>
+        <h2 class="h2 reveal">The reply looked fine. The CRM didn't.</h2>
+        <p class="lede reveal" style="margin-bottom:28px">Model evals score what an agent says. We check what it did. Flip between the two.</p>
+        <ul class="ticks reveal"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Model eval:</b> is the answer good?</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Agent test:</b> did the right thing happen, on every run?</span></li></ul>
+      </div>
+      <div class="vs reveal" aria-label="The same agent reply judged by a model eval and by an agent test">
+        <div class="vs-tabs" role="tablist"><button type="button" role="tab" class="on" data-vs="0" aria-selected="true">Model eval</button><button type="button" role="tab" data-vs="1" aria-selected="false">Agent test</button></div>
+        <div class="vs-body">
+          <div class="blk"><div class="blk-k">Request</div><div class="bubble in">Move the Acme renewal to Closed Won.</div></div>
+          <div class="blk"><div class="blk-k">Agent reply</div><div class="bubble out">Done. The Acme renewal is now Closed Won.</div></div>
+          <div class="vs-pane" data-pane="0">
+            <div class="blk-k">What a model eval checks</div>
+            <ul class="checks"><li class="ok"><b>PASS</b><span>Answers the request</span></li><li class="ok"><b>PASS</b><span>Clear, professional tone</span></li><li class="ok"><b>PASS</b><span>Nothing unsafe</span></li></ul>
+            <div class="verdict2 ok"><b>9.2 / 10</b><span>Looks great. Ship it.</span></div>
+          </div>
+          <div class="vs-pane" data-pane="1" hidden>
+            <div class="blk-k">What changed in the CRM</div>
+            <ul class="tracked"><li class="bad"><b>✗</b><span>crm.update(#3391 "Acme Ltd - New") → Closed Won</span></li><li class="bad"><b>✗</b><span>#3402 "Acme Ltd - Renewal" untouched</span></li></ul>
+            <div class="verdict2 bad"><b>FAIL</b><span>Wrong deal closed. Your forecast is now off, and the reply hides it.</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-
-  <!-- PRIMITIVES -->
-  <section id="primitives">
+  <!-- OFFERINGS -->
+  <section id="offerings">
     <div class="wrap">
-      <span class="kicker reveal">The primitives</span>
-      <h2 class="h2 reveal">Agents are built from primitives. We prove each one before it runs.</h2>
-      <p class="lede reveal">An agent you can trust is six things working right, every time. Premitive tests all six in your real application, not in a demo.</p>
-      <div class="prim-grid reveal">
-        <div class="prim" id="p-actions"><div class="prim-n"><i></i>01</div><h3>Actions</h3><p>Every click, update and record change is the one that should happen, and nothing else changes.</p></div>
-        <div class="prim" id="p-tools"><div class="prim-n"><i></i>02</div><h3>Tools</h3><p>Every tool and API call is allowed, correct, and handled safely when it fails.</p></div>
-        <div class="prim" id="p-decisions"><div class="prim-n"><i></i>03</div><h3>Decisions</h3><p>The agent takes the right path at every branch, for every type of user and request.</p></div>
-        <div class="prim" id="p-data"><div class="prim-n"><i></i>04</div><h3>Data</h3><p>No personal or confidential data leaks through answers, screens, logs or tool calls.</p></div>
-        <div class="prim" id="p-security"><div class="prim-n"><i></i>05</div><h3>Security</h3><p>The agent resists prompt injection, permission escapes and tool misuse, tried the way an attacker would.</p></div>
-        <div class="prim" id="p-compliance"><div class="prim-n"><i></i>06</div><h3>Compliance</h3><p>Behaviour matches your policies, with the evidence ready for audits and reviews.</p></div>
+      <span class="kicker reveal">What we do</span>
+      <h2 class="h2 reveal">Four ways we can help.</h2>
+      <div class="offs reveal" style="margin-top:36px">
+        <a class="off off-main" href="#test-cases"><span class="off-k">Our main thing</span><h3>QA for agents</h3><p>We test the agents you build or buy, in your systems, and hand you the proof.</p><span class="side-go">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="off" href="#qa-by-agents"><span class="off-k">For your software</span><h3>QA by agents</h3><p>Our testing agents test your app. Our engineers check their work.</p><span class="side-go">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="off" href="#custom"><span class="off-k">Built for you</span><h3>Custom agents</h3><p>Need an agent? We build it, and it ships with its own tests.</p><span class="side-go">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="off" href="#services"><span class="off-k">Engineering help</span><h3>Services</h3><p>We find where AI saves you time or money, build it, and measure it.</p><span class="side-go">See it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
       </div>
     </div>
   </section>
 
-  <!-- LLM VS AGENT -->
-  <section class="alt" id="llm-vs-agent">
+  <!-- QA FOR AGENTS: COVERAGE -->
+  <section id="coverage" class="alt">
     <div class="wrap">
-      <span class="kicker reveal">Testing LLMs is not testing agents</span>
-      <h2 class="h2 reveal">A great model doesn't make a working agent.</h2>
-      <p class="lede reveal">Model providers test the engine. Premitive tests the whole car, on your roads, with your passengers. If you run an agent, this is the testing you need.</p>
-      <div class="lvt reveal" role="table" aria-label="Testing an LLM compared with testing an agent">
-        <div class="lv-row lv-head"><span></span><span>Testing the LLM</span><span>Testing the agent · Premitive</span></div>
-        <div class="lv-row"><span>What is tested</span><span>The model on its own</span><span>The whole agent: model, prompts, tools, memory, workflow, your data and your systems</span></div><div class="lv-row"><span>The question</span><span>Is the answer good?</span><span>Did the right thing happen in your systems, every time?</span></div><div class="lv-row"><span>Typical result</span><span>A benchmark or quality score</span><span>Pass or fail on the end state, with a replay</span></div><div class="lv-row"><span>Failures it catches</span><span>Wrong, unsafe or off-topic text</span><span>Wrong actions, duplicates, leaks, lost context, broken handoffs, runaway cost</span></div><div class="lv-row"><span>When it runs</span><span>When the model changes</span><span>When anything changes: prompt, tool, workflow, model, data</span></div><div class="lv-row"><span>Who needs it</span><span>Model builders</span><span>Everyone who runs an agent</span></div>
+      <span class="kicker reveal">QA for agents</span>
+      <h2 class="h2 reveal">Works today. Will it work at turn 140?</h2>
+      <p class="lede reveal">We test what the agent does, from one simple request to a full workflow. Then we push it: long chats, heavy traffic, model upgrades, tight budgets.</p>
+      <div class="lvls reveal">
+        <a href="#test-cases" class="lvl"><b>Simple</b><span>One request, one action</span></a>
+        <a href="#test-cases" class="lvl"><b>Multi-step</b><span>Several turns and tools</span></a>
+        <a href="#test-cases" class="lvl"><b>Complex</b><span>Workflows, agent teams, browser, voice</span></a>
+        <span class="lvl lvl-on"><b>Under pressure</b><span>Try the tabs below</span></span>
       </div>
-    </div>
-  </section>
-
-  <!-- NON-FUNCTIONAL -->
-  <section id="nonfunctional">
-    <div class="wrap">
-      <span class="kicker reveal">Non-functional testing</span>
-      <h2 class="h2 reveal">Correct today. Still correct at turn 140, at peak load, after the next model upgrade?</h2>
-      <p class="lede reveal">Agents fail in ways a single test run never shows. We measure how quality holds as context grows, after compaction, under load, across model versions and against your cost budget, and report the point where it breaks.</p>
       <div class="nf reveal">
         <div>
           <div class="nf-tabs" id="nfTabs" role="tablist" aria-label="Non-functional tests"></div>
@@ -678,58 +708,47 @@
           <figcaption id="nfCap"></figcaption>
         </figure>
       </div>
-      <div class="nf-more reveal"><span>Also measured:</span><span>Memory across sessions</span><span>Consistency across phrasing and languages</span><span>pass^k reliability</span><span>Recovery after tool outages</span><span>Rate limits</span><span>Long tasks over hours</span></div>
+      <div class="nf-more reveal"><span>We also test:</span><span>Memory across sessions</span><span>Other phrasings and languages</span><span>Repeat runs</span><span>Tool outages</span><span>Rate limits</span><span>Hours-long tasks</span></div>
     </div>
   </section>
 
-  <!-- HOW -->
-  <section id="how">
-    <div class="wrap">
-      <span class="kicker reveal">How it works</span>
-      <h2 class="h2 reveal">A QA team for your agents, on every change.</h2>
-      <p class="lede reveal">We test an agent the way a seasoned tester would: from the outside, in the real application, against the result that should happen.</p>
-      <div class="steps reveal">
-        <div class="step"><div class="n">01 / Connect</div><h3>Point it at your agent</h3><p>An API, a chat or voice assistant, an agent inside your app, or a browser agent.</p></div>
-        <div class="step"><div class="n">02 / Define</div><h3>Turn rules into journeys</h3><p>Procedures, past tickets and edge cases become test journeys, written with you or generated for you.</p></div>
-        <div class="step"><div class="n">03 / Run</div><h3>Real users, real attackers</h3><p>Every journey runs in a sandbox of your application, with realistic personas and adversarial inputs.</p></div>
-        <div class="step"><div class="n">04 / Prove</div><h3>Evidence you can ship on</h3><p>Pass or fail on the end state, a replay and root cause per failure, and a release gate: no agent change ships until every primitive passes.</p></div>
-      </div>
-      <ul class="ticks how-ticks reveal">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Kept up to date.</b> We maintain your journeys as your application and agent change.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Fits your setup.</b> We test against a sandbox or staging copy of your application, agreed with you up front.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Built by test automation engineers.</b> Years of end-to-end testing experience, now pointed at agents.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- COMPLIANCE / INDEPENDENT PROOF -->
-  <section id="compliance" class="alt">
+  <!-- COMPLIANCE -->
+  <section id="compliance">
     <div class="wrap split">
       <div>
-        <span class="kicker reveal">Independent proof</span>
-        <h2 class="h2 reveal">Governance tools watch your agents. We prove they work.</h2>
-        <p class="lede reveal" style="margin-bottom:28px">Governance and GRC platforms record which agents you run and what they are allowed to do. They can't show that an agent does the right thing in your systems. Premitive is the independent tester: each control becomes tests, the tests run on every change, and the results arrive as evidence where you already report.</p>
-        <ul class="ticks reveal">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Controls as tests.</b> Your policies, and frameworks such as the EU AI Act, ISO/IEC 42001 and the OWASP agentic risks, turned into checks that run.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Independent.</b> We don't make the models or sell an agent platform, so no vendor's interest shapes the result.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Evidence where you report.</b> Results, replays and control mapping exported in a format your GRC or audit tool can take in.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Never stale.</b> Re-tested on every change, so evidence is as current as the agent.</span></li>
-        </ul>
+        <span class="kicker reveal">QA for agents · Compliance</span>
+        <h2 class="h2 reveal">Your GRC tool says it's approved. We show it works.</h2>
+        <p class="lede reveal" style="margin-bottom:28px">We turn your policies and controls into tests, run them on every change, and hand the results to your audit team.</p>
+        <ul class="ticks reveal"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Your rules.</b> Plus the EU AI Act, ISO 42001 and OWASP agent risks.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Independent.</b> We don't sell models or agent platforms.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Audit-ready.</b> Exports your GRC or audit tool can take in.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Always current.</b> Re-run on every change.</span></li></ul>
       </div>
       <div class="reveal">
-        <div class="chain" aria-hidden="true"><span>Your controls</span><em>&rarr;</em><span class="on">Premitive tests</span><em>&rarr;</em><span class="on">Evidence</span><em>&rarr;</em><span>Your GRC tool</span></div>
-        <div class="table" role="img" aria-label="Illustration of controls mapped to tests and evidence, with three ready and one gap">
+        <div class="chain" aria-hidden="true"><span>Your controls</span><em>&rarr;</em><span class="on">Our tests</span><em>&rarr;</em><span class="on">Evidence</span><em>&rarr;</em><span>Your GRC tool</span></div>
+        <div class="table" role="img" aria-label="Example of controls mapped to tests and evidence, with three ready and one gap">
           <div class="t-row t4"><span>Control</span><span>Tested by</span><span>Evidence</span><span>Status</span></div>
-          <div class="t-row t4"><span>Human approval on high-value actions</span><span>48 journeys</span><span>Replays</span><span class="tag-ok">READY</span></div>
-          <div class="t-row t4"><span>No personal data in responses</span><span>312 probes</span><span>Run log</span><span class="tag-ok">READY</span></div>
-          <div class="t-row t4"><span>Agent acts only within user's rights</span><span>64 journeys</span><span>Replays</span><span class="tag-ok">READY</span></div>
-          <div class="t-row t4"><span>Resists injected instructions</span><span>210 attacks</span><span>1 failing</span><span class="tag-gap">GAP</span></div>
-          <div class="t-foot">Illustration. We provide test evidence and readiness checks; only auditors and regulators can certify compliance.</div>
+          <div class="t-row t4"><span>Approval on high-value actions</span><span>48 journeys</span><span>Replays</span><span class="tag-ok">READY</span></div>
+          <div class="t-row t4"><span>No personal data in replies</span><span>312 probes</span><span>Run log</span><span class="tag-ok">READY</span></div>
+          <div class="t-row t4"><span>Acts only within the user's rights</span><span>64 journeys</span><span>Replays</span><span class="tag-ok">READY</span></div>
+          <div class="t-row t4"><span>Ignores injected instructions</span><span>210 attacks</span><span>1 failing</span><span class="tag-gap">GAP</span></div>
+          <div class="t-foot">Example. We give you test evidence; only auditors and regulators can certify compliance.</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- HOW -->
+  <section id="how" class="alt">
+    <div class="wrap">
+      <span class="kicker reveal">QA for agents · How it works</span>
+      <h2 class="h2 reveal">Four steps. Then it runs on every change.</h2>
+      <div class="steps reveal" style="margin-top:36px">
+        <div class="step"><div class="n">01 / Connect</div><h3>Point us at your agent</h3><p>Chat, voice, a copilot in your app, a browser agent, or an n8n, Make or Zapier flow.</p></div>
+        <div class="step"><div class="n">02 / Define</div><h3>Turn rules into tests</h3><p>Your rules, past tickets and edge cases become test journeys. We write them with you.</p></div>
+        <div class="step"><div class="n">03 / Run</div><h3>Real users, real attackers</h3><p>In a sandbox copy of your systems, never production.</p></div>
+        <div class="step"><div class="n">04 / Prove</div><h3>Know before you ship</h3><p>Pass or fail on what actually changed, a replay for every failure, and a gate before each release.</p></div>
+      </div>
+      <ul class="ticks how-ticks reveal"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>We keep tests current</b> as your product changes.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Built by test automation engineers,</b> who've been doing this for years.</span></li></ul>
+    </div>
+  </section>
 
   <!-- QA BY AGENTS -->
   <section id="qa-by-agents">
@@ -737,24 +756,23 @@
       <div class="split" style="align-items:start">
         <div>
           <span class="kicker reveal">QA by agents</span>
-          <h2 class="h2 reveal">Testing agents that never sleep. Engineers who stay accountable.</h2>
-          <p class="lede reveal" style="margin-bottom:28px">Our agents do the heavy lifting of testing your software on every change. Our engineers design the strategy, review the results and own the outcome.</p>
+          <h2 class="h2 reveal">Agents that test your software. Engineers who check them.</h2>
+          <p class="lede reveal" style="margin-bottom:28px">Our agents explore your app, write tests, run them, and fix the ones that break. Our engineers review every result.</p>
           <a href="#" class="btn btn-primary reveal" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Put agents on your QA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
-
-        <div class="feed reveal" aria-label="Animated illustration of a testing agent at work">
+        <div class="feed reveal" aria-label="Animated example of a testing agent at work">
           <div class="live-top"><div class="dots"><i></i><i></i><i></i></div><span class="live-badge"><i></i>Testing agent at work</span></div>
           <ul class="feed-list" id="feedList"></ul>
-          <div class="feed-foot"><span>Illustration</span><span id="feedCount">0 tests this session</span></div>
+          <div class="feed-foot"><span>Example</span><span id="feedCount">0 tests this session</span></div>
         </div>
       </div>
       <div class="cap-grid reveal">
-        <div class="cap"><span class="cap-n">01</span><h3>Explore</h3><p>Agents map your application screen by screen and surface the journeys nobody is testing.</p></div>
-        <div class="cap"><span class="cap-n">02</span><h3>Write</h3><p>Test cases drafted from your stories, tickets and docs, then reviewed by our engineers.</p></div>
-        <div class="cap"><span class="cap-n">03</span><h3>Run</h3><p>UI, API and end-to-end suites on every change, with test impact analysis so only what matters runs.</p></div>
-        <div class="cap"><span class="cap-n">04</span><h3>Maintain</h3><p>Suites kept current as your product changes, so tests stop breaking every release.</p></div>
-        <div class="cap"><span class="cap-n">05</span><h3>Triage</h3><p>Real bugs separated from flaky tests and environment noise, each with a root cause.</p></div>
-        <div class="cap"><span class="cap-n">06</span><h3>Benchmark</h3><p>Load and latency checks in the pipeline, catching slowdowns before your users do.</p></div>
+        <div class="cap"><span class="cap-n">01</span><h3>Explore</h3><p>Maps your app and finds the journeys nobody tests.</p></div>
+        <div class="cap"><span class="cap-n">02</span><h3>Write</h3><p>Drafts tests from your tickets and docs.</p></div>
+        <div class="cap"><span class="cap-n">03</span><h3>Run</h3><p>UI, API and end-to-end tests on every change.</p></div>
+        <div class="cap"><span class="cap-n">04</span><h3>Maintain</h3><p>Fixes tests when your product changes.</p></div>
+        <div class="cap"><span class="cap-n">05</span><h3>Triage</h3><p>Tells real bugs from flaky tests.</p></div>
+        <div class="cap"><span class="cap-n">06</span><h3>Benchmark</h3><p>Catches slowdowns before your users do.</p></div>
       </div>
     </div>
   </section>
@@ -765,52 +783,79 @@
       <div class="build reveal">
         <div>
           <span class="kicker">Custom agents</span>
-          <h2 class="h2">Need an agent built? We ship it pre-proven.</h2>
-          <p class="lede" style="margin-bottom:28px">We design and build agents for your workflows, on the platform you choose. Every one goes live with its own test suite, release gate and replays from day one.</p>
+          <h2 class="h2">Need an agent built? It ships with its tests.</h2>
+          <p class="lede" style="margin-bottom:28px">We build agents for your workflows, on the platform you pick. Each one goes live already tested.</p>
           <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Talk about your agent</a>
         </div>
         <div>
-          <div class="bs"><span>01</span><div><b>Scope</b><p>The job, the systems it touches, and what it must never do.</p></div></div>
-          <div class="bs"><span>02</span><div><b>Build</b><p>Support, operations, QA or in-product agents, on the models you choose.</p></div></div>
-          <div class="bs"><span>03</span><div><b>Prove</b><p>All six primitives tested before anyone relies on it.</p></div></div>
-          <div class="bs"><span>04</span><div><b>Run</b><p>Re-tested on every change, with replays when something fails.</p></div></div>
+          <div class="bs"><span>01</span><div><b>Scope</b><p>What it does, what it touches, what it must never do.</p></div></div>
+          <div class="bs"><span>02</span><div><b>Build</b><p>On the models and platform you choose.</p></div></div>
+          <div class="bs"><span>03</span><div><b>Prove</b><p>Fully tested before anyone relies on it.</p></div></div>
+          <div class="bs"><span>04</span><div><b>Run</b><p>Re-tested every time it changes.</p></div></div>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- SERVICES -->
   <section id="services">
     <div class="wrap">
-      <span class="kicker reveal">Services · Augmented engineering</span>
-      <h2 class="h2 reveal">AI where it pays off. Measured, not promised.</h2>
-      <p class="lede reveal">We study how your team works today, find where AI will genuinely save time or cost, build it into your process, and report the return against a baseline we agree with you up front.</p>
+      <span class="kicker reveal">Services · Augmented engineering · Integrations · Software</span>
+      <h2 class="h2 reveal">AI where it pays off. And we measure it.</h2>
+      <p class="lede reveal">We sit with your team, find where AI saves real time or money, build it in, and show you the numbers.</p>
       <div class="split" style="align-items:start">
         <div class="steps steps-2 reveal">
-          <div class="step"><div class="n">01 / Study</div><h3>Map how work gets done</h3><p>We sit with your team, map each step, and measure the time, cost and defects it takes today. That becomes the baseline.</p></div>
-          <div class="step"><div class="n">02 / Design</div><h3>Pick the highest-return use cases</h3><p>Only where AI clearly beats the current way. Target metrics agreed with you before anything is built.</p></div>
-          <div class="step"><div class="n">03 / Implement</div><h3>Build it into your process</h3><p>AI-assisted engineering, integrations and tooling, delivered test-first so speed never costs quality.</p></div>
-          <div class="step"><div class="n">04 / Measure</div><h3>Report the return</h3><p>Hours saved, cycle time, defects and cost, compared with the baseline. Keep what works, drop what doesn't.</p></div>
+          <div class="step"><div class="n">01 / Study</div><h3>Measure today</h3><p>Map the work. Time, cost and defects become the baseline.</p></div>
+          <div class="step"><div class="n">02 / Pick</div><h3>Choose where AI wins</h3><p>Only the few places where it clearly beats today. Targets agreed up front.</p></div>
+          <div class="step"><div class="n">03 / Build</div><h3>Build it in</h3><p>AI-assisted engineering, integrations and tools, tested first.</p></div>
+          <div class="step"><div class="n">04 / Measure</div><h3>Show the return</h3><p>Compare with the baseline. Keep what works, drop what doesn't.</p></div>
         </div>
-        <div class="table reveal" role="img" aria-label="Illustration of how return on investment is reported against a baseline">
-          <div class="t-row t4"><span>Metric</span><span>Baseline</span><span>After</span><span>Change</span></div>
+        <div class="table reveal" role="img" aria-label="Example of a return report against a baseline">
+          <div class="t-row t4"><span>Metric</span><span>Before</span><span>After</span><span>Change</span></div>
           <div class="t-row t4"><span>Test cases written per sprint</span><span>40</span><span>110</span><span class="tag-ok">+175%</span></div>
           <div class="t-row t4"><span>Regression cycle</span><span>3 days</span><span>6 hours</span><span class="tag-ok">&minus;92%</span></div>
-          <div class="t-row t4"><span>Defects found after release</span><span>12</span><span>4</span><span class="tag-ok">&minus;67%</span></div>
-          <div class="t-row t4"><span>Engineer hours on manual QA</span><span>120</span><span>45</span><span class="tag-ok">&minus;63%</span></div>
-          <div class="t-foot">Illustration of an ROI report. Your baseline and targets are set in the Study phase.</div>
+          <div class="t-row t4"><span>Bugs found after release</span><span>12</span><span>4</span><span class="tag-ok">&minus;67%</span></div>
+          <div class="t-row t4"><span>Hours on manual QA</span><span>120</span><span>45</span><span class="tag-ok">&minus;63%</span></div>
+          <div class="t-foot">Example report. Your baseline and targets come from the study.</div>
         </div>
-      </div>
-      <div class="svc reveal" style="margin-top:56px">
-        <div><h3>Augmented engineering</h3><p>Our engineers build with AI coding and testing tools inside your process, with test-first guardrails so speed never costs quality.</p></div>
-        <div><h3>Integrations</h3><p>Reliable connections between your agents, apps, APIs and legacy systems, tested end to end.</p></div>
-        <div><h3>Software engineering</h3><p>Production-ready software and utilities delivered end to end, on a test-first foundation.</p></div>
       </div>
       <div class="svc-cta reveal">
         <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Start with a process study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        <span>Need something specific? <a href="mailto:admin@premitive.in">Let's talk</a> about your roadmap.</span>
+        <span>Something specific in mind? <a href="mailto:admin@premitive.in">Email us</a>.</span>
       </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="alt">
+    <div class="wrap">
+      <span class="kicker reveal">Pricing</span>
+      <h2 class="h2 reveal">Start small. Pay for what you run.</h2>
+      <p class="lede reveal">Every setup is different, so we quote after a 30-minute call.</p>
+      <div class="plans reveal">
+        <div class="plan">
+          <div class="plan-k">Pilot</div>
+          <h3>One agent, 3 to 4 weeks</h3>
+          <div class="plan-price">Fixed fee</div>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>100 to 200</b> test journeys</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Functional and security</b> tests</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>A report</b> with replays of every failure</span></li></ul>
+          <a href="#" class="btn btn-ghost" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Talk to us</a>
+        </div>
+        <div class="plan plan-main">
+          <div class="plan-k">QA for agents <span class="plan-tag">Most teams</span></div>
+          <h3>Ongoing testing</h3>
+          <div class="plan-price">Monthly, per agent or workflow</div>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Tests run</b> on every change, with a release gate</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Load, context and upgrade</b> tests</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Compliance evidence,</b> kept current</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>We maintain</b> your tests</span></li></ul>
+          <a href="#" class="btn btn-accent" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Talk to us</a>
+        </div>
+        <div class="plan">
+          <div class="plan-k">Build and services</div>
+          <h3>QA by agents, custom agents, services</h3>
+          <div class="plan-price">Per project or team</div>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Scoped</b> after a call or process study</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Clear targets</b> agreed before we start</span></li></ul>
+          <a href="#" class="btn btn-ghost" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Talk to us</a>
+        </div>
+      </div>
+      <p class="plans-note reveal">Prefer email? <a href="mailto:admin@premitive.in">admin@premitive.in</a></p>
     </div>
   </section>
 
@@ -818,13 +863,12 @@
   <section>
     <div class="wrap">
       <div class="cta-box reveal">
-        <h2 class="h2">Find out what your agent really does.</h2>
-        <p class="lede">Start with a pilot. We test one agent on your most important journeys and hand you the report, the failures and the replays.</p>
+        <h2 class="h2">See what your agent really does.</h2>
+        <p class="lede">Start with one agent. We'll show you what it gets right, what it gets wrong, and why.</p>
         <div class="cta-actions">
-          <a href="#" class="btn btn-accent" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
+          <a href="#" class="btn btn-accent" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a call</a>
           <a href="mailto:admin@premitive.in" class="btn btn-ghost">Email us</a>
         </div>
-        <small>or write to <a href="mailto:admin@premitive.in">admin@premitive.in</a></small>
       </div>
     </div>
   </section>
@@ -863,7 +907,7 @@
         if (open) { mMenu.removeAttribute('hidden'); } else { mMenu.setAttribute('hidden', ''); }
       };
       burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
-      mGroupBtn.addEventListener('click', function () {
+      if (mGroupBtn) mGroupBtn.addEventListener('click', function () {
         var open = mGroupBtn.getAttribute('aria-expanded') !== 'true';
         mGroupBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
         if (open) { mGroup.removeAttribute('hidden'); } else { mGroup.setAttribute('hidden', ''); }
@@ -2003,27 +2047,27 @@
     /* Non-functional chart */
     var nfData = [
       { k: 'Context growth', h: 'Quality as the conversation grows',
-        p: 'We run the same journeys with more and more history in context and track task success at each size.',
+        p: 'Same journeys, more and more history. We track where quality drops.',
         r: ['The size where quality drops below your floor', 'Which rules are forgotten first', 'Whether summarising or retrieval fixes it'],
         x: ['10k', '25k', '50k', '100k', '150k', '200k'], xt: 'Tokens in context', yt: 'Task success %', ymin: 50, ymax: 100,
         s: [[97, 96, 93, 85, 74, 61]], th: 90, thl: 'Your floor 90%', cap: 'Illustration · support agent, 300 journeys per point' },
       { k: 'Compaction', h: 'What survives context compaction',
-        p: 'Agents summarise their history when context fills up. We check every rule and fact before and after, and what the agent does next.',
+        p: 'When context fills up, agents summarise. We check what they forget.',
         r: ['Rules and facts lost in the summary', 'Actions that change after compaction', 'Safe settings for when and how to compact'],
         x: ['T20', 'T40', 'T60', 'T80', 'T100', 'T120'], xt: 'Conversation turn', yt: 'Rules still followed %', ymin: 50, ymax: 100,
         s: [[100, 100, 99, 71, 68, 66]], mk: 2.5, mkl: 'Compaction', cap: 'Illustration · ops agent, 40 hard rules tracked' },
       { k: 'Load', h: 'Behaviour at peak traffic',
-        p: 'Hundreds of simulated users at once. Correctness, reply time, tool errors and rate limits, measured together.',
+        p: 'Hundreds of users at once. Is it still right, and still fast?',
         r: ['Users you can serve within your reply-time target', 'Where tools and APIs start failing', 'Whether errors reach customers'],
         x: ['1', '50', '100', '250', '500', '1000'], xt: 'Concurrent users', yt: 'p95 reply time, seconds', ymin: 0, ymax: 15,
         s: [[0.8, 0.9, 1.1, 2.4, 6.8, 14]], th: 2, thl: 'Target 2 s', hb: true, cap: 'Illustration · telecom support agent' },
       { k: 'Model upgrade', h: 'Before you switch models',
-        p: 'Your full suite on the current and the new model version, side by side, before the change goes live.',
+        p: 'Your whole suite on the old and new model, before you switch.',
         r: ['Regressions by test family', 'Changes in cost and speed', 'A go or no-go for the release gate'],
         x: ['Refunds', 'Identity', 'Claims', 'Handoffs', 'Injection'], xt: 'Test family', yt: 'Pass rate %', ymin: 80, ymax: 100,
         s: [[99, 98, 96, 97, 95], [99, 92, 88, 97, 96]], sl: ['Current', 'New version'], cap: 'Illustration · claims agent, 600 scenarios' },
       { k: 'Cost', h: 'Cost per task, including the outliers',
-        p: 'Average cost hides loops. We measure the full spread and find the runs that blow the budget.',
+        p: 'Averages hide loops. We find the runs that blow your budget.',
         r: ['Cost per task at median and worst case', 'Loops and repeated tool calls', 'Limits that keep spend predictable'],
         x: ['p10', 'p25', 'p50', 'p75', 'p90', 'p99'], xt: 'Runs, by percentile', yt: 'Cost per task, $', ymin: 0, ymax: 10,
         s: [[0.18, 0.25, 0.34, 0.48, 0.62, 9.1]], th: 0.6, thl: 'Budget $0.60', hb: true, cap: 'Illustration · research agent, 500 runs' }
@@ -2065,13 +2109,24 @@
         nfTabs.querySelectorAll('button').forEach(function (b, j) { b.classList.toggle('on', i === j); b.setAttribute('aria-selected', i === j ? 'true' : 'false'); });
         document.getElementById('nfH').textContent = d.h; document.getElementById('nfP').textContent = d.p;
         var ul = document.getElementById('nfR'); ul.innerHTML = '';
-        d.r.forEach(function (t) { var li = document.createElement('li'); li.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>'; var sp = document.createElement('span'); sp.textContent = 'We report: ' + t.charAt(0).toLowerCase() + t.slice(1); li.appendChild(sp); ul.appendChild(li); });
-        document.getElementById('nfCap').textContent = d.cap + '. Made-up data.';
+        d.r.forEach(function (t) { var li = document.createElement('li'); li.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>'; var sp = document.createElement('span'); sp.textContent = t; li.appendChild(sp); ul.appendChild(li); });
+        document.getElementById('nfCap').textContent = d.cap.replace('Illustration', 'Example') + '. Made-up data.';
         svg.setAttribute('aria-label', d.h + ': ' + d.yt + ' by ' + d.xt);
         draw(d);
       };
       nfData.forEach(function (d, i) { var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = d.k; b.addEventListener('click', function () { nfShow(i); }); nfTabs.appendChild(b); });
       nfShow(0);
+    }
+
+
+    /* Model eval vs agent test */
+    var vs = document.querySelector('.vs');
+    if (vs) {
+      var vsBtns = vs.querySelectorAll('.vs-tabs button'), panes = vs.querySelectorAll('.vs-pane'), vsAuto = !reduce, vsT = null;
+      var vsShow = function (k) { vsBtns.forEach(function (b, j) { b.classList.toggle('on', j === k); b.setAttribute('aria-selected', j === k ? 'true' : 'false'); }); panes.forEach(function (p, j) { p.hidden = j !== k; }); };
+      vsBtns.forEach(function (b, j) { b.addEventListener('click', function () { vsAuto = false; clearTimeout(vsT); vsShow(j); }); });
+      var vsLoop = function (k) { if (!vsAuto) return; vsShow(k); vsT = setTimeout(function () { vsLoop(1 - k); }, k ? 6000 : 3500); };
+      vsLoop(0);
     }
 
   })();
