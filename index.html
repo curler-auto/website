@@ -431,6 +431,21 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
+
+    /* Sound familiar */
+    .pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pain { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: flex; flex-direction: column; }
+    .pain-k { font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+    .pain q { display: block; quotes: none; font-family: var(--head); font-size: 19px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; padding-left: 14px; border-left: 3px solid var(--fail); margin-bottom: 14px; }
+    .pain-a { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+    .pain-a b { color: var(--accent-text); display: block; font-size: 12.5px; font-family: var(--mono); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 6px; }
+    .pains-foot { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-size: 16px; color: var(--muted); }
+    @media (max-width: 980px) { .pains { grid-template-columns: 1fr; } }
+    /* Evidence chain */
+    .chain { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; font-family: var(--mono); font-size: 12.5px; }
+    .chain span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+    .chain span.on { background: var(--accent-soft); border-color: transparent; color: var(--accent-text); }
+    .chain em { font-style: normal; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -481,7 +496,7 @@
       <div class="hero-head">
         <div class="pill"><i></i>Every primitive, pre-proven.</div>
         <h1>Prove your AI agents work. <em>Before they go live.</em></h1>
-        <p class="sub">Every agent is built from primitives: the actions it takes, the tools it calls, the decisions it makes. Premitive sends your agent real test inputs, tracks everything it does in your application, and checks each primitive.</p>
+        <p class="sub">Independent testing for every AI agent you run. We send your agent real test inputs, track everything it does in your systems, and prove each primitive it is built from, with evidence you can ship and audit on.</p>
         <div class="hero-cta">
           <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Test your agent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
           <a href="#primitives" class="btn btn-ghost">The six primitives</a>
@@ -514,9 +529,43 @@
   <div class="strip">
     <div class="wrap">
       <p>One way of testing for every agent you run</p>
-      <div class="strip-list"><span>Custom-built agents</span><span>Open-source frameworks</span><span>Vendor agent platforms</span><span>Browser agents</span><span>Chat and voice assistants</span></div>
+      <div class="strip-list"><span>Custom-built agents</span><span>Workflow automations: n8n, Make, Zapier</span><span>Open-source frameworks</span><span>Vendor agent platforms</span><span>Browser agents</span><span>Chat and voice assistants</span></div>
     </div>
   </div>
+
+
+  <!-- SOUND FAMILIAR -->
+  <section id="why">
+    <div class="wrap">
+      <span class="kicker reveal">Sound familiar?</span>
+      <h2 class="h2 reveal">Your agents are live. Can anyone prove what they actually do?</h2>
+      <p class="lede reveal">Agents now refund, update, email and approve inside your systems. Most teams find out what went wrong from a customer, an auditor or a bill.</p>
+      <div class="pains reveal">
+        <div class="pain">
+          <div class="pain-k">Engineering and product</div>
+          <q>It worked in the demo. Then a customer got two refunds.</q>
+          <q>Every prompt or model change, we hold our breath and ship.</q>
+          <div class="pain-a"><b>With Premitive</b>Every journey re-run on every change, checked in your real systems, and repeated until it passes every time.</div>
+        </div>
+        <div class="pain">
+          <div class="pain-k">Operations and automation</div>
+          <q>Someone built an n8n flow that writes to our CRM. Nobody tested it.</q>
+          <q>The email step timed out, retried, and sent the invoice three times.</q>
+          <div class="pain-a"><b>With Premitive</b>We read the workflow, test every branch, break every connection on purpose, and check what changed in each system.</div>
+        </div>
+        <div class="pain">
+          <div class="pain-k">Risk, security and compliance</div>
+          <q>Our governance tool says the agent is approved. It can't tell me the agent works.</q>
+          <q>The auditor asked how the agent was tested. We had a spreadsheet and a screenshot.</q>
+          <div class="pain-a"><b>With Premitive</b>Independent test evidence, mapped to your controls and delivered to the GRC or audit tool you already report from.</div>
+        </div>
+      </div>
+      <div class="pains-foot reveal">
+        <span>If one of these sounds like your week, start with one agent.</span>
+        <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a pilot call</a>
+      </div>
+    </div>
+  </section>
 
   <!-- TWO SIDES -->
   <section class="alt" id="agentic-quality">
@@ -608,25 +657,30 @@
     </div>
   </section>
 
-  <!-- COMPLIANCE -->
+  <!-- COMPLIANCE / INDEPENDENT PROOF -->
   <section id="compliance" class="alt">
     <div class="wrap split">
       <div>
-        <span class="kicker reveal">Compliance-ready</span>
-        <h2 class="h2 reveal">Ready for review before the reviewer asks.</h2>
-        <p class="lede reveal" style="margin-bottom:28px">Map agent behaviour to your own policies and to the frameworks you work under, such as the EU AI Act or ISO/IEC 42001. Every check comes with the evidence behind it.</p>
+        <span class="kicker reveal">Independent proof</span>
+        <h2 class="h2 reveal">Governance tools watch your agents. We prove they work.</h2>
+        <p class="lede reveal" style="margin-bottom:28px">Governance and GRC platforms record which agents you run and what they are allowed to do. They can't show that an agent does the right thing in your systems. Premitive is the independent tester: each control becomes tests, the tests run on every change, and the results arrive as evidence where you already report.</p>
         <ul class="ticks reveal">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Policies as tests.</b> Your rules become checks that run on every change.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Evidence, not claims.</b> Replays, steps and results, ready to hand to risk and audit teams.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Gaps flagged early.</b> See what still needs work long before a formal review.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Controls as tests.</b> Your policies, and frameworks such as the EU AI Act, ISO/IEC 42001 and the OWASP agentic risks, turned into checks that run.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Independent.</b> We don't make the models or sell an agent platform, so no vendor's interest shapes the result.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Evidence where you report.</b> Results, replays and control mapping exported in a format your GRC or audit tool can take in.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Never stale.</b> Re-tested on every change, so evidence is as current as the agent.</span></li>
         </ul>
       </div>
-      <div class="table reveal" role="img" aria-label="Illustration of a readiness checklist with three checks ready and one gap">
-        <div class="t-row"><span>Check</span><span>Evidence</span><span>Status</span></div>
-        <div class="t-row"><span>Human approval on high-value actions</span><span>48 journeys, replays</span><span class="tag-ok">READY</span></div>
-        <div class="t-row"><span>No personal data in responses</span><span>312 probes</span><span class="tag-ok">READY</span></div>
-        <div class="t-row"><span>Actions logged and traceable</span><span>Run log</span><span class="tag-ok">READY</span></div>
-        <div class="t-row"><span>Resists injected instructions</span><span>1 failing journey</span><span class="tag-gap">GAP</span></div>
+      <div class="reveal">
+        <div class="chain" aria-hidden="true"><span>Your controls</span><em>&rarr;</em><span class="on">Premitive tests</span><em>&rarr;</em><span class="on">Evidence</span><em>&rarr;</em><span>Your GRC tool</span></div>
+        <div class="table" role="img" aria-label="Illustration of controls mapped to tests and evidence, with three ready and one gap">
+          <div class="t-row t4"><span>Control</span><span>Tested by</span><span>Evidence</span><span>Status</span></div>
+          <div class="t-row t4"><span>Human approval on high-value actions</span><span>48 journeys</span><span>Replays</span><span class="tag-ok">READY</span></div>
+          <div class="t-row t4"><span>No personal data in responses</span><span>312 probes</span><span>Run log</span><span class="tag-ok">READY</span></div>
+          <div class="t-row t4"><span>Agent acts only within user's rights</span><span>64 journeys</span><span>Replays</span><span class="tag-ok">READY</span></div>
+          <div class="t-row t4"><span>Resists injected instructions</span><span>210 attacks</span><span>1 failing</span><span class="tag-gap">GAP</span></div>
+          <div class="t-foot">Illustration. We provide test evidence and readiness checks; only auditors and regulators can certify compliance.</div>
+        </div>
       </div>
     </div>
   </section>
