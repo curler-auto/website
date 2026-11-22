@@ -44,7 +44,7 @@
     body { font-family: var(--body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     a { color: inherit; }
     button { font-family: inherit; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
 
     /* Logo */
     .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
@@ -397,6 +397,15 @@
       .how-ticks { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) { .case { padding: 16px; } .bubble { max-width: 100%; } .hero-head { text-align: left; } .hero-head .hero-cta, .hero-prims { justify-content: flex-start; } }
+
+    /* Wide screens */
+    .hero-head { max-width: 980px; }
+    @media (min-width: 1400px) {
+      .console-grid { grid-template-columns: 340px 1fr; min-height: 560px; }
+      .h2 { max-width: 900px; }
+      .lede { max-width: 720px; }
+      .bubble { max-width: 80%; }
+    }
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.on { opacity: 1; transform: none; }
 
