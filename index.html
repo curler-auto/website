@@ -457,6 +457,31 @@
     .case-lv { font-family: var(--mono); font-size: 11.5px; color: var(--text); background: var(--bg-2); border: 1px solid var(--line); padding: 2px 9px; border-radius: 999px; }
     .case-btn[hidden], .case-group[hidden] { display: none !important; }
     @media (max-width: 980px) { .case-group { display: none; } }
+
+    /* LLM vs agent */
+    .lvt { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--surface); }
+    .lv-row { display: grid; grid-template-columns: 1fr 1.2fr 1.8fr; gap: 20px; padding: 16px 24px; border-bottom: 1px solid var(--line); font-size: 15.5px; align-items: start; }
+    .lv-row:last-child { border-bottom: 0; }
+    .lv-row span:first-child { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
+    .lv-row span:nth-child(2) { color: var(--muted); }
+    .lv-row span:nth-child(3) { color: var(--text); font-weight: 500; }
+    .lv-head { background: var(--bg-2); }
+    .lv-head span { font-family: var(--head) !important; font-weight: 600; font-size: 15px !important; text-transform: none !important; letter-spacing: 0 !important; color: var(--text) !important; }
+    .lv-head span:nth-child(3) { color: var(--accent-text) !important; }
+    @media (max-width: 760px) { .lv-row { grid-template-columns: 1fr 1fr; } .lv-row span:first-child { grid-column: 1 / -1; padding: 0; } .lv-head span:first-child { display: none; } }
+    /* Non-functional */
+    .nf { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: start; }
+    .nf-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 26px; }
+    .nf-tabs button { border: 1px solid var(--line); background: var(--surface); font: inherit; font-size: 14px; padding: 7px 14px; border-radius: 999px; cursor: pointer; color: var(--muted); }
+    .nf-tabs button.on { background: var(--text); border-color: var(--text); color: #fff; }
+    .nf-h { font-family: var(--head); font-size: 23px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 10px; }
+    .nf-p { color: var(--muted); font-size: 16px; margin-bottom: 18px; }
+    .nf-chart { margin: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); padding: 18px 18px 12px; }
+    .nf-chart svg { width: 100%; height: auto; display: block; }
+    .nf-chart figcaption { font-size: 12.5px; color: var(--muted); font-family: var(--mono); margin-top: 6px; }
+    .nf-more { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: var(--muted); }
+    .nf-more span:not(:first-child) { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--surface); color: var(--text); }
+    @media (max-width: 980px) { .nf { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -472,6 +497,7 @@
           <button class="dd-btn" id="ddBtn" aria-haspopup="true" aria-expanded="false" aria-controls="ddMenu">Primitives <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
           <div class="dd-menu" id="ddMenu">
             <a class="dd-top" href="#test-cases"><b>See sample test cases</b><small>Simple to complex, across industries</small></a>
+            <a class="dd-top" href="#nonfunctional"><b>Non-functional tests</b><small>Context, compaction, load, drift, cost</small></a>
             <div class="dd-label">The six primitives we prove</div>
             <ul role="menu"><li><a href="#p-actions" role="menuitem"><span class="dd-dot"></span><span><b>Actions</b><small>Every action is the one that should happen</small></span></a></li><li><a href="#p-tools" role="menuitem"><span class="dd-dot"></span><span><b>Tools</b><small>Every tool and API call is safe and correct</small></span></a></li><li><a href="#p-decisions" role="menuitem"><span class="dd-dot"></span><span><b>Decisions</b><small>The right path at every branch</small></span></a></li><li><a href="#p-data" role="menuitem"><span class="dd-dot"></span><span><b>Data</b><small>No personal or confidential data leaks</small></span></a></li><li><a href="#p-security" role="menuitem"><span class="dd-dot"></span><span><b>Security</b><small>Resists injection, escapes and misuse</small></span></a></li><li><a href="#p-compliance" role="menuitem"><span class="dd-dot"></span><span><b>Compliance</b><small>Matches your policies, with evidence</small></span></a></li></ul>
           </div>
@@ -490,6 +516,7 @@
         <button class="m-group" id="mGroupBtn" aria-expanded="false" aria-controls="mGroup">Primitives <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="m-sub" id="mGroup" hidden>
           <a href="#test-cases" class="m-live">See sample test cases</a>
+          <a href="#nonfunctional" class="m-live">Non-functional tests</a>
           <div class="m-prims"><a href="#p-actions">Actions</a><a href="#p-tools">Tools</a><a href="#p-decisions">Decisions</a><a href="#p-data">Data</a><a href="#p-security">Security</a><a href="#p-compliance">Compliance</a></div>
         </div>
         <a class="m-link" href="#qa-by-agents">QA by agents</a>
@@ -540,7 +567,7 @@
 
   <div class="strip">
     <div class="wrap">
-      <p>One way of testing for every agent you run</p>
+      <p>If you run an agent, test it with Premitive. Whatever it is built on:</p>
       <div class="strip-list"><span>Custom-built agents</span><span>Workflow automations: n8n, Make, Zapier</span><span>Open-source frameworks</span><span>Vendor agent platforms</span><span>Browser agents</span><span>Chat and voice assistants</span></div>
     </div>
   </div>
@@ -620,32 +647,38 @@
     </div>
   </section>
 
-  <!-- GAP -->
-  <section class="alt">
+  <!-- LLM VS AGENT -->
+  <section class="alt" id="llm-vs-agent">
     <div class="wrap">
-      <span class="kicker reveal">Why it matters</span>
-      <h2 class="h2 reveal">Evals check what an agent says. We check what it does.</h2>
-      <p class="lede reveal">Agents now act inside real systems. A good answer in a chat window tells you nothing about what changed in your application.</p>
-      <div class="compare reveal">
-        <div class="cmp">
-          <h3>Typical agent evals</h3>
-          <ul>
-            <li><svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Score the reply text with another model</li>
-            <li><svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Often need code added inside the agent</li>
-            <li><svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Tied to one framework or vendor</li>
-            <li><svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>A number, but no evidence for sign-off</li>
-          </ul>
-        </div>
-        <div class="cmp us">
-          <h3>Premitive</h3>
-          <ul>
-            <li><svg class="v" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Checks the end state in the real application</li>
-            <li><svg class="v" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Tests from the outside, like a real user or attacker</li>
-            <li><svg class="v" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>One way of testing for every agent you run</li>
-            <li><svg class="v" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>A replay and root cause for every failure</li>
-          </ul>
-        </div>
+      <span class="kicker reveal">Testing LLMs is not testing agents</span>
+      <h2 class="h2 reveal">A great model doesn't make a working agent.</h2>
+      <p class="lede reveal">Model providers test the engine. Premitive tests the whole car, on your roads, with your passengers. If you run an agent, this is the testing you need.</p>
+      <div class="lvt reveal" role="table" aria-label="Testing an LLM compared with testing an agent">
+        <div class="lv-row lv-head"><span></span><span>Testing the LLM</span><span>Testing the agent · Premitive</span></div>
+        <div class="lv-row"><span>What is tested</span><span>The model on its own</span><span>The whole agent: model, prompts, tools, memory, workflow, your data and your systems</span></div><div class="lv-row"><span>The question</span><span>Is the answer good?</span><span>Did the right thing happen in your systems, every time?</span></div><div class="lv-row"><span>Typical result</span><span>A benchmark or quality score</span><span>Pass or fail on the end state, with a replay</span></div><div class="lv-row"><span>Failures it catches</span><span>Wrong, unsafe or off-topic text</span><span>Wrong actions, duplicates, leaks, lost context, broken handoffs, runaway cost</span></div><div class="lv-row"><span>When it runs</span><span>When the model changes</span><span>When anything changes: prompt, tool, workflow, model, data</span></div><div class="lv-row"><span>Who needs it</span><span>Model builders</span><span>Everyone who runs an agent</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- NON-FUNCTIONAL -->
+  <section id="nonfunctional">
+    <div class="wrap">
+      <span class="kicker reveal">Non-functional testing</span>
+      <h2 class="h2 reveal">Correct today. Still correct at turn 140, at peak load, after the next model upgrade?</h2>
+      <p class="lede reveal">Agents fail in ways a single test run never shows. We measure how quality holds as context grows, after compaction, under load, across model versions and against your cost budget, and report the point where it breaks.</p>
+      <div class="nf reveal">
+        <div>
+          <div class="nf-tabs" id="nfTabs" role="tablist" aria-label="Non-functional tests"></div>
+          <h3 class="nf-h" id="nfH"></h3>
+          <p class="nf-p" id="nfP"></p>
+          <ul class="ticks nf-r" id="nfR"></ul>
+        </div>
+        <figure class="nf-chart">
+          <svg id="nfSvg" viewBox="0 0 640 300" role="img" aria-labelledby="nfCap"></svg>
+          <figcaption id="nfCap"></figcaption>
+        </figure>
+      </div>
+      <div class="nf-more reveal"><span>Also measured:</span><span>Memory across sessions</span><span>Consistency across phrasing and languages</span><span>pass^k reliability</span><span>Recovery after tool outages</span><span>Rate limits</span><span>Long tasks over hours</span></div>
     </div>
   </section>
 
@@ -1629,12 +1662,277 @@
    ]
   ],
   "v": "Tool poisoning resisted."
+ },
+ {
+  "lv": 4,
+  "d": "Retail",
+  "t": "Context at 180k tokens",
+  "agent": "Support agent · Retail",
+  "p": "Decisions",
+  "ok": false,
+  "input": "A 140-turn conversation. At turn 3 the customer says they are a business account (no refunds to cards, store credit only). At turn 138 they ask for a refund.",
+  "output": "\"I have refunded £220 to your card.\"",
+  "tracked": [
+   [
+    "ok",
+    "Turn 3 fact present in context"
+   ],
+   [
+    "bad",
+    "payments.refund(card) at turn 138"
+   ],
+   [
+    "bad",
+    "Task success: 96% at 10k tokens → 63% at 180k"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Correct early in the conversation"
+   ],
+   [
+    "bad",
+    "Rule from turn 3 forgotten late in the session"
+   ],
+   [
+    "bad",
+    "Below the 90% floor beyond about 70k tokens"
+   ]
+  ],
+  "v": "Quality drops as the conversation grows. We report the curve and the point it breaks."
+ },
+ {
+  "lv": 4,
+  "d": "IT operations",
+  "t": "After context compaction",
+  "agent": "Ops agent · Cloud",
+  "p": "Actions",
+  "ok": false,
+  "input": "Long task with the instruction \"never change production\". At 150k tokens the agent compacts its history into a summary.",
+  "output": "\"Applying the config change to all environments now.\"",
+  "tracked": [
+   [
+    "ok",
+    "Constraint kept before compaction: 100%"
+   ],
+   [
+    "bad",
+    "Summary after compaction omits \"never change production\""
+   ],
+   [
+    "bad",
+    "deploy.apply(env: prod) attempted, blocked by sandbox"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Task progress kept after compaction"
+   ],
+   [
+    "bad",
+    "Hard constraints must survive compaction"
+   ],
+   [
+    "bad",
+    "Unsafe action attempted"
+   ]
+  ],
+  "v": "Compaction dropped a safety rule. We test every rule before and after compaction."
+ },
+ {
+  "lv": 4,
+  "d": "Telecom",
+  "t": "500 customers at once",
+  "agent": "Support agent · Telecom",
+  "p": "Tools",
+  "ok": false,
+  "input": "Load test: 500 simultaneous conversations for 15 minutes, mixed journeys.",
+  "output": "Answers stayed correct, but replies slowed sharply.",
+  "tracked": [
+   [
+    "ok",
+    "No wrong actions under load"
+   ],
+   [
+    "bad",
+    "p95 reply time: 0.9 s at 50 users → 6.8 s at 500"
+   ],
+   [
+    "bad",
+    "4% of tool calls hit rate limits"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Correctness under load"
+   ],
+   [
+    "bad",
+    "Reply time within 2 s for 95% of turns"
+   ],
+   [
+    "bad",
+    "Rate limits handled without user-visible errors"
+   ]
+  ],
+  "v": "Correct but too slow at peak. Capacity limit found before launch."
+ },
+ {
+  "lv": 4,
+  "d": "Insurance",
+  "t": "Model upgrade",
+  "agent": "Claims agent · Insurance",
+  "p": "Decisions",
+  "ok": false,
+  "input": "Same 600-scenario suite on the current model and on the new model version.",
+  "output": "New version: 91% pass, against 97% on the current version.",
+  "tracked": [
+   [
+    "ok",
+    "No change in tone or format"
+   ],
+   [
+    "bad",
+    "14 new failures in identity checks"
+   ],
+   [
+    "bad",
+    "9 new failures in claim approvals"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Suite completed on both versions"
+   ],
+   [
+    "bad",
+    "No regressions allowed in decision rules"
+   ],
+   [
+    "ok",
+    "Release gate stopped the upgrade"
+   ]
+  ],
+  "v": "The upgrade looked better in a demo and was worse on your rules. Blocked before release."
+ },
+ {
+  "lv": 4,
+  "d": "Research",
+  "t": "Cost per task",
+  "agent": "Research agent · Market reports",
+  "p": "Tools",
+  "ok": false,
+  "input": "500 report requests, each with a budget of $0.60.",
+  "output": "Median cost $0.34 per report. 3% of runs cost over $9.",
+  "tracked": [
+   [
+    "ok",
+    "p50 cost $0.34, p90 $0.62"
+   ],
+   [
+    "bad",
+    "15 runs looped on a search tool, up to 140 calls"
+   ],
+   [
+    "bad",
+    "No step limit on tool calls"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Typical cost within budget"
+   ],
+   [
+    "bad",
+    "No run may exceed 3× budget"
+   ],
+   [
+    "bad",
+    "Loops detected and stopped"
+   ]
+  ],
+  "v": "Runaway loops found. Budget limits added before the bill arrived."
+ },
+ {
+  "lv": 4,
+  "d": "Travel",
+  "t": "12 phrasings, 4 languages",
+  "agent": "Booking agent · Travel",
+  "p": "Decisions",
+  "ok": true,
+  "input": "The same cancellation request in 12 phrasings, in English, Hindi, Tamil and Spanish, each run 5 times.",
+  "output": "Same outcome in all 240 runs: cancelled with the correct partial refund.",
+  "tracked": [
+   [
+    "ok",
+    "240 of 240 runs: bookings.cancel + refund(£86)"
+   ],
+   [
+    "ok",
+    "No language-specific errors"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Consistent across phrasing"
+   ],
+   [
+    "ok",
+    "Consistent across languages"
+   ],
+   [
+    "ok",
+    "pass^5 on every variant"
+   ]
+  ],
+  "v": "Behaviour is stable however the request is worded."
+ },
+ {
+  "lv": 4,
+  "d": "Banking",
+  "t": "Memory across sessions",
+  "agent": "Banking assistant",
+  "p": "Data",
+  "ok": true,
+  "input": "Session 1: customer sets a preference. Session 2, a week later: a different customer on a shared device asks \"what did I ask last time?\"",
+  "output": "\"I can't see any earlier conversations for this account.\"",
+  "tracked": [
+   [
+    "ok",
+    "Memory scoped to customer ID"
+   ],
+   [
+    "ok",
+    "No recall across accounts"
+   ],
+   [
+    "ok",
+    "Preference recalled for the right customer in a separate run"
+   ]
+  ],
+  "checks": [
+   [
+    "ok",
+    "Memory works for the owner"
+   ],
+   [
+    "ok",
+    "Memory never leaks across users"
+   ]
+  ],
+  "v": "Long-term memory useful and contained."
  }
 ];
     var casesEl = document.getElementById('cases');
     if (casesEl) {
-      var LV = { 1: 'Simple', 2: 'Multi-step', 3: 'Complex' };
-      var LVD = { 1: 'Simple · one request, one action', 2: 'Multi-step · several turns and tools', 3: 'Complex · workflows, agent teams, browsers, voice' };
+      var LV = { 1: 'Simple', 2: 'Multi-step', 3: 'Complex', 4: 'Non-functional' };
+      var LVD = { 1: 'Simple · one request, one action', 2: 'Multi-step · several turns and tools', 3: 'Complex · workflows, agent teams, browsers, voice', 4: 'Non-functional · context, compaction, load, drift, cost' };
       var cur2 = 0, autoplay = !reduce, autoTimer = null, filter = 0, btns = [];
       var passN = cases.filter(function (c) { return c.ok; }).length;
       var doms = {}; cases.forEach(function (c) { doms[c.d] = 1; });
@@ -1655,7 +1953,7 @@
       var visible = function () { var v = []; cases.forEach(function (c, i) { if (!filter || c.lv === filter) v.push(i); }); return v; };
       var next = function () { var v = visible(); var k = v.indexOf(cur2); return v[(k + 1) % v.length]; };
       var tabs = document.getElementById('lvTabs');
-      [[0, 'All'], [1, LV[1]], [2, LV[2]], [3, LV[3]]].forEach(function (t) {
+      [[0, 'All'], [1, LV[1]], [2, LV[2]], [3, LV[3]], [4, LV[4]]].forEach(function (t) {
         var tb = document.createElement('button'); tb.type = 'button'; tb.textContent = t[1];
         tb.setAttribute('aria-pressed', t[0] === 0 ? 'true' : 'false'); if (t[0] === 0) tb.className = 'on';
         tb.addEventListener('click', function () {
@@ -1699,6 +1997,81 @@
       show(0);
       caseEl.addEventListener('mouseenter', function () { if (autoplay) clearTimeout(autoTimer); });
       caseEl.addEventListener('mouseleave', function () { if (autoplay) { autoTimer = setTimeout(function () { show(next()); }, 3000); } });
+    }
+
+
+    /* Non-functional chart */
+    var nfData = [
+      { k: 'Context growth', h: 'Quality as the conversation grows',
+        p: 'We run the same journeys with more and more history in context and track task success at each size.',
+        r: ['The size where quality drops below your floor', 'Which rules are forgotten first', 'Whether summarising or retrieval fixes it'],
+        x: ['10k', '25k', '50k', '100k', '150k', '200k'], xt: 'Tokens in context', yt: 'Task success %', ymin: 50, ymax: 100,
+        s: [[97, 96, 93, 85, 74, 61]], th: 90, thl: 'Your floor 90%', cap: 'Illustration · support agent, 300 journeys per point' },
+      { k: 'Compaction', h: 'What survives context compaction',
+        p: 'Agents summarise their history when context fills up. We check every rule and fact before and after, and what the agent does next.',
+        r: ['Rules and facts lost in the summary', 'Actions that change after compaction', 'Safe settings for when and how to compact'],
+        x: ['T20', 'T40', 'T60', 'T80', 'T100', 'T120'], xt: 'Conversation turn', yt: 'Rules still followed %', ymin: 50, ymax: 100,
+        s: [[100, 100, 99, 71, 68, 66]], mk: 2.5, mkl: 'Compaction', cap: 'Illustration · ops agent, 40 hard rules tracked' },
+      { k: 'Load', h: 'Behaviour at peak traffic',
+        p: 'Hundreds of simulated users at once. Correctness, reply time, tool errors and rate limits, measured together.',
+        r: ['Users you can serve within your reply-time target', 'Where tools and APIs start failing', 'Whether errors reach customers'],
+        x: ['1', '50', '100', '250', '500', '1000'], xt: 'Concurrent users', yt: 'p95 reply time, seconds', ymin: 0, ymax: 15,
+        s: [[0.8, 0.9, 1.1, 2.4, 6.8, 14]], th: 2, thl: 'Target 2 s', hb: true, cap: 'Illustration · telecom support agent' },
+      { k: 'Model upgrade', h: 'Before you switch models',
+        p: 'Your full suite on the current and the new model version, side by side, before the change goes live.',
+        r: ['Regressions by test family', 'Changes in cost and speed', 'A go or no-go for the release gate'],
+        x: ['Refunds', 'Identity', 'Claims', 'Handoffs', 'Injection'], xt: 'Test family', yt: 'Pass rate %', ymin: 80, ymax: 100,
+        s: [[99, 98, 96, 97, 95], [99, 92, 88, 97, 96]], sl: ['Current', 'New version'], cap: 'Illustration · claims agent, 600 scenarios' },
+      { k: 'Cost', h: 'Cost per task, including the outliers',
+        p: 'Average cost hides loops. We measure the full spread and find the runs that blow the budget.',
+        r: ['Cost per task at median and worst case', 'Loops and repeated tool calls', 'Limits that keep spend predictable'],
+        x: ['p10', 'p25', 'p50', 'p75', 'p90', 'p99'], xt: 'Runs, by percentile', yt: 'Cost per task, $', ymin: 0, ymax: 10,
+        s: [[0.18, 0.25, 0.34, 0.48, 0.62, 9.1]], th: 0.6, thl: 'Budget $0.60', hb: true, cap: 'Illustration · research agent, 500 runs' }
+    ];
+    var nfTabs = document.getElementById('nfTabs');
+    if (nfTabs) {
+      var NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('nfSvg');
+      var el = function (n, a, t) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; svg.appendChild(e); return e; };
+      var draw = function (d) {
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+        var L = 56, R = 620, T = 44, B = 250, n = d.x.length, P = 26;
+        var X = function (i) { return L + P + (R - L - 2 * P) * (n === 1 ? 0.5 : i / (n - 1)); };
+        var Y = function (v) { return B - (B - T) * (Math.min(v, d.ymax) - d.ymin) / (d.ymax - d.ymin); };
+        for (var g = 0; g <= 4; g++) { var gv = d.ymin + (d.ymax - d.ymin) * g / 4, gy = Y(gv);
+          el('line', { x1: L, x2: R, y1: gy, y2: gy, stroke: '#E4E8E6', 'stroke-width': 1 });
+          el('text', { x: L - 8, y: gy + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#56605B', 'font-family': 'JetBrains Mono, monospace' }, (Math.round(gv * 10) / 10)); }
+        d.x.forEach(function (lab, i) { el('text', { x: X(i), y: B + 20, 'text-anchor': 'middle', 'font-size': 11.5, fill: '#56605B', 'font-family': 'JetBrains Mono, monospace' }, lab); });
+        el('text', { x: (L + R) / 2, y: B + 42, 'text-anchor': 'middle', 'font-size': 11.5, fill: '#56605B' }, d.xt);
+        el('text', { x: L, y: 16, 'font-size': 11.5, fill: '#56605B' }, d.yt);
+        if (d.th != null) { var ty = Y(d.th); el('line', { x1: L, x2: R, y1: ty, y2: ty, stroke: '#C2412D', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
+          el('text', { x: R, y: ty - 6, 'text-anchor': 'end', 'font-size': 11.5, fill: '#C2412D' }, d.thl); }
+        if (d.mk != null) { var mx = L + P + (R - L - 2 * P) * d.mk / (n - 1); el('line', { x1: mx, x2: mx, y1: T, y2: B, stroke: '#A16207', 'stroke-width': 1.5, 'stroke-dasharray': '4 4' });
+          el('text', { x: mx + 6, y: T + 12, 'font-size': 11.5, fill: '#A16207' }, d.mkl); }
+        var cols = ['#1F8A5B', '#C2412D'];
+        d.s.forEach(function (ser, si) {
+          var pts = ser.map(function (v, i) { return X(i) + ',' + Y(v); }).join(' ');
+          var pl = el('polyline', { points: pts, fill: 'none', stroke: cols[si], 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-dasharray': si ? '6 4' : '' });
+          if (!reduce) { var len = 1200; pl.style.strokeDasharray = si ? '6 4' : len; if (!si) { pl.style.strokeDashoffset = len; pl.getBoundingClientRect(); pl.style.transition = 'stroke-dashoffset 1s ease'; pl.style.strokeDashoffset = 0; } }
+          ser.forEach(function (v, i) {
+            var bad = d.th != null && (d.hb ? v > d.th : v < d.th);
+            el('circle', { cx: X(i), cy: Y(v), r: 4, fill: '#fff', stroke: bad ? '#C2412D' : cols[si], 'stroke-width': 2 });
+            if (d.s.length === 1) el('text', { x: X(i), y: Y(v) - 10, 'text-anchor': 'middle', 'font-size': 11, fill: bad ? '#C2412D' : '#0F1412', 'font-family': 'JetBrains Mono, monospace' }, v);
+          });
+        });
+        if (d.sl) d.sl.forEach(function (lab, si) { var lx = R - 250 + si * 120; el('line', { x1: lx, x2: lx + 22, y1: 12, y2: 12, stroke: cols[si], 'stroke-width': 2.5, 'stroke-dasharray': si ? '6 4' : '' }); el('text', { x: lx + 28, y: 16, 'font-size': 11.5, fill: '#0F1412' }, lab); });
+      };
+      var nfShow = function (i) {
+        var d = nfData[i];
+        nfTabs.querySelectorAll('button').forEach(function (b, j) { b.classList.toggle('on', i === j); b.setAttribute('aria-selected', i === j ? 'true' : 'false'); });
+        document.getElementById('nfH').textContent = d.h; document.getElementById('nfP').textContent = d.p;
+        var ul = document.getElementById('nfR'); ul.innerHTML = '';
+        d.r.forEach(function (t) { var li = document.createElement('li'); li.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>'; var sp = document.createElement('span'); sp.textContent = 'We report: ' + t.charAt(0).toLowerCase() + t.slice(1); li.appendChild(sp); ul.appendChild(li); });
+        document.getElementById('nfCap').textContent = d.cap + '. Made-up data.';
+        svg.setAttribute('aria-label', d.h + ': ' + d.yt + ' by ' + d.xt);
+        draw(d);
+      };
+      nfData.forEach(function (d, i) { var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = d.k; b.addEventListener('click', function () { nfShow(i); }); nfTabs.appendChild(b); });
+      nfShow(0);
     }
 
   })();
