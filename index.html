@@ -286,6 +286,59 @@
     .cap p { font-size: 15px; color: var(--muted); }
     @media (max-width: 980px) { .sides { grid-template-columns: 1fr; } .cap-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 620px) { .cap-grid { grid-template-columns: 1fr; } .side { padding: 26px; } .side h3 { font-size: 24px; } }
+
+    /* Nav dropdown */
+    .dd { position: relative; }
+    .dd-btn { display: inline-flex; align-items: center; gap: 4px; background: none; border: 0; color: var(--muted); font-size: 14px; font-weight: 500; cursor: pointer; padding: 0; font-family: inherit; }
+    .dd-btn:hover, .dd.open .dd-btn { color: var(--text); }
+    .dd-btn svg { width: 15px; height: 15px; transition: transform .2s; }
+    .dd.open .dd-btn svg { transform: rotate(180deg); }
+    .dd-menu { position: absolute; top: calc(100% + 18px); left: 50%; transform: translate(-50%, 6px); width: 340px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 10px; opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s; }
+    .dd-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
+    .dd.open .dd-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+    .dd-top { display: block; text-decoration: none; padding: 12px 12px; border-radius: 10px; background: var(--accent-soft); margin-bottom: 8px; }
+    .dd-top b { display: block; font-size: 14px; color: var(--accent-text); }
+    .dd-top small { font-size: 12.5px; color: var(--muted); }
+    .dd-label { font-family: var(--mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 6px 12px 4px; }
+    .dd-menu ul { list-style: none; display: grid; gap: 2px; }
+    .dd-menu ul a { display: flex; gap: 12px; align-items: flex-start; text-decoration: none; padding: 9px 12px; border-radius: 10px; }
+    .dd-menu ul a:hover, .dd-menu ul a:focus-visible { background: var(--bg-2); outline: none; }
+    .dd-dot { width: 9px; height: 9px; border-radius: 2px; background: var(--accent); margin-top: 6px; flex-shrink: 0; }
+    .dd-menu ul b { display: block; font-size: 14px; color: var(--text); font-weight: 600; }
+    .dd-menu ul small { font-size: 12.5px; color: var(--muted); }
+    .prim:target { background: var(--accent-soft); }
+    .prim { scroll-margin-top: 120px; }
+
+    /* Mobile menu */
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .burger { display: none; width: 42px; height: 42px; border: 1px solid var(--line-2); border-radius: 10px; background: #fff; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 4px; padding: 0; }
+    .burger span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .2s, opacity .2s; }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .m-menu { border-top: 1px solid var(--line); background: #fff; max-height: calc(100vh - 66px); overflow-y: auto; }
+    .m-menu .wrap { display: flex; flex-direction: column; padding-top: 8px; padding-bottom: 24px; }
+    .m-group, .m-link { display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 16px 2px; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; font-family: inherit; cursor: pointer; }
+    .m-group svg { width: 18px; height: 18px; transition: transform .2s; }
+    .m-group[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .m-sub { padding: 12px 0 16px; border-bottom: 1px solid var(--line); }
+    .m-live { display: block; background: var(--accent-soft); color: var(--accent-text); font-weight: 600; font-size: 15px; text-decoration: none; padding: 12px 14px; border-radius: 10px; margin-bottom: 10px; }
+    .m-prims { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .m-prims a { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; font-size: 15px; text-decoration: none; color: var(--text); }
+    .m-prims a::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+    .m-cta { margin-top: 20px; width: 100%; padding: 14px; }
+    .m-mail { text-align: center; margin-top: 14px; font-size: 14px; color: var(--muted); text-decoration: none; }
+    @media (max-width: 980px) { .burger { display: inline-flex; } }
+    @media (max-width: 420px) { .nav-book { display: none; } }
+    @media (min-width: 981px) { .m-menu { display: none !important; } }
+
+    /* Services ROI */
+    .steps-2 { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+    .t-row.t4 { grid-template-columns: 1.6fr .8fr .8fr auto; }
+    .t-foot { padding: 12px 20px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); background: var(--bg-2); }
+    .svc-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px; margin-top: 36px; color: var(--muted); font-size: 15px; }
+    .svc-cta span a { color: var(--accent-text); text-decoration: none; font-weight: 500; }
+    @media (max-width: 620px) { .steps-2 { grid-template-columns: 1fr; } .t-row.t4 { grid-template-columns: 1.4fr .8fr auto; } .t-row.t4 span:nth-child(2) { display: none; } }
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.on { opacity: 1; transform: none; }
 
@@ -322,11 +375,36 @@
         <span class="logo-word">premitive</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#qa-for-agents">QA for agents</a></li>
+        <li class="dd">
+          <button class="dd-btn" id="ddBtn" aria-haspopup="true" aria-expanded="false" aria-controls="ddMenu">QA for agents <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="dd-menu" id="ddMenu">
+            <a class="dd-top" href="#qa-for-agents"><b>See a live test run</b><small>Try it on a sample agent</small></a>
+            <div class="dd-label">The six primitives we prove</div>
+            <ul role="menu"><li><a href="#p-actions" role="menuitem"><span class="dd-dot"></span><span><b>Actions</b><small>Every action is the one that should happen</small></span></a></li><li><a href="#p-tools" role="menuitem"><span class="dd-dot"></span><span><b>Tools</b><small>Every tool and API call is safe and correct</small></span></a></li><li><a href="#p-decisions" role="menuitem"><span class="dd-dot"></span><span><b>Decisions</b><small>The right path at every branch</small></span></a></li><li><a href="#p-data" role="menuitem"><span class="dd-dot"></span><span><b>Data</b><small>No personal or confidential data leaks</small></span></a></li><li><a href="#p-security" role="menuitem"><span class="dd-dot"></span><span><b>Security</b><small>Resists injection, escapes and misuse</small></span></a></li><li><a href="#p-compliance" role="menuitem"><span class="dd-dot"></span><span><b>Compliance</b><small>Matches your policies, with evidence</small></span></a></li></ul>
+          </div>
+        </li>
         <li><a href="#qa-by-agents">QA by agents</a></li>
         <li><a href="#custom">Custom agents</a></li>
+        <li><a href="#services">Services</a></li>
       </ul>
-      <a href="#" class="btn btn-primary btn-sm" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
+      <div class="nav-right">
+        <a href="#" class="btn btn-primary btn-sm nav-book" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="m-menu" id="mMenu" hidden>
+      <div class="wrap">
+        <button class="m-group" id="mGroupBtn" aria-expanded="false" aria-controls="mGroup">QA for agents <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="m-sub" id="mGroup" hidden>
+          <a href="#qa-for-agents" class="m-live">See a live test run</a>
+          <div class="m-prims"><a href="#p-actions">Actions</a><a href="#p-tools">Tools</a><a href="#p-decisions">Decisions</a><a href="#p-data">Data</a><a href="#p-security">Security</a><a href="#p-compliance">Compliance</a></div>
+        </div>
+        <a class="m-link" href="#qa-by-agents">QA by agents</a>
+        <a class="m-link" href="#custom">Custom agents</a>
+        <a class="m-link" href="#services">Services</a>
+        <a href="#" class="btn btn-primary m-cta" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a demo</a>
+        <a class="m-mail" href="mailto:admin@premitive.in">admin@premitive.in</a>
+      </div>
     </div>
   </nav>
 
@@ -444,12 +522,12 @@
       <h2 class="h2 reveal">Agents are built from primitives. We prove each one before it runs.</h2>
       <p class="lede reveal">An agent you can trust is six things working right, every time. Premitive tests all six in your real application, not in a demo.</p>
       <div class="prim-grid reveal">
-        <div class="prim"><div class="prim-n"><i></i>01</div><h3>Actions</h3><p>Every click, update and record change is the one that should happen, and nothing else changes.</p></div>
-        <div class="prim"><div class="prim-n"><i></i>02</div><h3>Tools</h3><p>Every tool and API call is allowed, correct, and handled safely when it fails.</p></div>
-        <div class="prim"><div class="prim-n"><i></i>03</div><h3>Decisions</h3><p>The agent takes the right path at every branch, for every type of user and request.</p></div>
-        <div class="prim"><div class="prim-n"><i></i>04</div><h3>Data</h3><p>No personal or confidential data leaks through answers, screens, logs or tool calls.</p></div>
-        <div class="prim"><div class="prim-n"><i></i>05</div><h3>Security</h3><p>The agent resists prompt injection, permission escapes and tool misuse, tried the way an attacker would.</p></div>
-        <div class="prim"><div class="prim-n"><i></i>06</div><h3>Compliance</h3><p>Behaviour matches your policies, with the evidence ready for audits and reviews.</p></div>
+        <div class="prim" id="p-actions"><div class="prim-n"><i></i>01</div><h3>Actions</h3><p>Every click, update and record change is the one that should happen, and nothing else changes.</p></div>
+        <div class="prim" id="p-tools"><div class="prim-n"><i></i>02</div><h3>Tools</h3><p>Every tool and API call is allowed, correct, and handled safely when it fails.</p></div>
+        <div class="prim" id="p-decisions"><div class="prim-n"><i></i>03</div><h3>Decisions</h3><p>The agent takes the right path at every branch, for every type of user and request.</p></div>
+        <div class="prim" id="p-data"><div class="prim-n"><i></i>04</div><h3>Data</h3><p>No personal or confidential data leaks through answers, screens, logs or tool calls.</p></div>
+        <div class="prim" id="p-security"><div class="prim-n"><i></i>05</div><h3>Security</h3><p>The agent resists prompt injection, permission escapes and tool misuse, tried the way an attacker would.</p></div>
+        <div class="prim" id="p-compliance"><div class="prim-n"><i></i>06</div><h3>Compliance</h3><p>Behaviour matches your policies, with the evidence ready for audits and reviews.</p></div>
       </div>
     </div>
   </section>
@@ -589,12 +667,41 @@
           <div class="bs"><span>04</span><div><b>Run</b><p>Re-tested on every change, with replays when something fails.</p></div></div>
         </div>
       </div>
-      <div class="svc reveal" style="margin-top:24px">
-        <div><h3>Augmented engineering</h3><p>Our engineers build with AI coding and testing tools, with test-first guardrails so speed never costs quality.</p></div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <span class="kicker reveal">Services · Augmented engineering</span>
+      <h2 class="h2 reveal">AI where it pays off. Measured, not promised.</h2>
+      <p class="lede reveal">We study how your team works today, find where AI will genuinely save time or cost, build it into your process, and report the return against a baseline we agree with you up front.</p>
+      <div class="split" style="align-items:start">
+        <div class="steps steps-2 reveal">
+          <div class="step"><div class="n">01 / Study</div><h3>Map how work gets done</h3><p>We sit with your team, map each step, and measure the time, cost and defects it takes today. That becomes the baseline.</p></div>
+          <div class="step"><div class="n">02 / Design</div><h3>Pick the highest-return use cases</h3><p>Only where AI clearly beats the current way. Target metrics agreed with you before anything is built.</p></div>
+          <div class="step"><div class="n">03 / Implement</div><h3>Build it into your process</h3><p>AI-assisted engineering, integrations and tooling, delivered test-first so speed never costs quality.</p></div>
+          <div class="step"><div class="n">04 / Measure</div><h3>Report the return</h3><p>Hours saved, cycle time, defects and cost, compared with the baseline. Keep what works, drop what doesn't.</p></div>
+        </div>
+        <div class="table reveal" role="img" aria-label="Illustration of how return on investment is reported against a baseline">
+          <div class="t-row t4"><span>Metric</span><span>Baseline</span><span>After</span><span>Change</span></div>
+          <div class="t-row t4"><span>Test cases written per sprint</span><span>40</span><span>110</span><span class="tag-ok">+175%</span></div>
+          <div class="t-row t4"><span>Regression cycle</span><span>3 days</span><span>6 hours</span><span class="tag-ok">&minus;92%</span></div>
+          <div class="t-row t4"><span>Defects found after release</span><span>12</span><span>4</span><span class="tag-ok">&minus;67%</span></div>
+          <div class="t-row t4"><span>Engineer hours on manual QA</span><span>120</span><span>45</span><span class="tag-ok">&minus;63%</span></div>
+          <div class="t-foot">Illustration of an ROI report. Your baseline and targets are set in the Study phase.</div>
+        </div>
+      </div>
+      <div class="svc reveal" style="margin-top:56px">
+        <div><h3>Augmented engineering</h3><p>Our engineers build with AI coding and testing tools inside your process, with test-first guardrails so speed never costs quality.</p></div>
         <div><h3>Integrations</h3><p>Reliable connections between your agents, apps, APIs and legacy systems, tested end to end.</p></div>
         <div><h3>Software engineering</h3><p>Production-ready software and utilities delivered end to end, on a test-first foundation.</p></div>
       </div>
-      <p class="svc-note reveal">Need something specific? <a href="mailto:admin@premitive.in">Let's talk</a> about your roadmap.</p>
+      <div class="svc-cta reveal">
+        <a href="#" class="btn btn-primary" data-cal-link="premitive-digital-solutions-r3iigd/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Start with a process study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <span>Need something specific? <a href="mailto:admin@premitive.in">Let's talk</a> about your roadmap.</span>
+      </div>
     </div>
   </section>
 
@@ -696,6 +803,40 @@
     }
     runLive();
 
+
+
+    /* Mobile menu */
+    var burger = document.getElementById('burger'), mMenu = document.getElementById('mMenu');
+    var mGroupBtn = document.getElementById('mGroupBtn'), mGroup = document.getElementById('mGroup');
+    if (burger && mMenu) {
+      var setMenu = function (open) {
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        if (open) { mMenu.removeAttribute('hidden'); } else { mMenu.setAttribute('hidden', ''); }
+      };
+      burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+      mGroupBtn.addEventListener('click', function () {
+        var open = mGroupBtn.getAttribute('aria-expanded') !== 'true';
+        mGroupBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) { mGroup.removeAttribute('hidden'); } else { mGroup.setAttribute('hidden', ''); }
+      });
+      mMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+      window.addEventListener('resize', function () { if (window.innerWidth > 980) setMenu(false); });
+    }
+    /* Nav dropdown */
+    var dd = document.querySelector('.dd'), ddBtn = document.getElementById('ddBtn');
+    if (dd && ddBtn) {
+      var closeTimer;
+      var openDd = function () { clearTimeout(closeTimer); dd.classList.add('open'); ddBtn.setAttribute('aria-expanded', 'true'); };
+      var closeDd = function () { dd.classList.remove('open'); ddBtn.setAttribute('aria-expanded', 'false'); };
+      ddBtn.addEventListener('click', function (e) { e.stopPropagation(); dd.classList.contains('open') ? closeDd() : openDd(); });
+      dd.addEventListener('mouseenter', openDd);
+      dd.addEventListener('mouseleave', function () { closeTimer = setTimeout(closeDd, 150); });
+      document.addEventListener('click', function (e) { if (!dd.contains(e.target)) closeDd(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.classList.contains('open')) { closeDd(); ddBtn.focus(); } });
+      dd.querySelectorAll('.dd-menu a').forEach(function (a) { a.addEventListener('click', closeDd); });
+    }
     /* QA by agents feed */
     var feedEvents = [
       ['k-explore','EXPLORE','Mapped checkout flow: 14 screens'],
